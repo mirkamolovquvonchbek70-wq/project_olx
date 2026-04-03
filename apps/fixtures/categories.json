@@ -1,0 +1,2361 @@
+[
+{
+    "model": "apps.category",
+    "pk": 1,
+    "fields": {
+        "slug": "transport",
+        "image": "category/2026/02/25/transport-3-1x.png",
+        "name": "Transport",
+        "parent": null,
+        "attribute": null,
+        "count_products": 1,
+        "lft": 1,
+        "rght": 36,
+        "tree_id": 11,
+        "level": 0
+    }
+},
+{
+    "model": "apps.category",
+    "pk": 2,
+    "fields": {
+        "slug": "yengil-avtomashinalar",
+        "image": "",
+        "name": "Yengil avtomashinalar",
+        "parent": 1,
+        "attribute": [
+            {
+                "name": "terms_of_sale",
+                "type": "multiselect",
+                "label": "sotish sharlari",
+                "options": [
+                    "Oddiy sotish",
+                    "Trade-in",
+                    "Kredit",
+                    "Arenda",
+                    "Lizing",
+                    "Almashtirish mumkin",
+                    "Bo'lib to'lash"
+                ],
+                "required": false,
+                "placeholder": null
+            },
+            {
+                "name": "motor_year",
+                "type": "int",
+                "label": "Ishlab chiqarish yili",
+                "options": null,
+                "required": true,
+                "placeholder": null
+            },
+            {
+                "name": "model",
+                "type": "select",
+                "label": "Model",
+                "options": [
+                    "Cobolt",
+                    "Damas",
+                    "Epica"
+                ],
+                "required": true,
+                "placeholder": "Tanlash"
+            },
+            {
+                "name": "car_body",
+                "type": "select",
+                "label": "Kuzov turi",
+                "options": [
+                    "Kabriolet",
+                    "Pikap",
+                    "Kupe",
+                    "Universal",
+                    "Xetchbek",
+                    "Miniver",
+                    "Yo'l tanlamas",
+                    "Sedan",
+                    "Boshqa"
+                ],
+                "required": true,
+                "placeholder": "Tanlash"
+            },
+            {
+                "name": "motor_mileage",
+                "type": "int",
+                "label": "Bosgan yo'li",
+                "options": [
+                    "Kabriolet",
+                    "Pikap",
+                    "Kupe",
+                    "Universal",
+                    "Xetchbek",
+                    "Miniver",
+                    "Yo'l tanlamas",
+                    "Sedan",
+                    "Boshqa"
+                ],
+                "required": false,
+                "placeholder": "km"
+            },
+            {
+                "name": "transmission_type",
+                "type": "select",
+                "label": "Uzatmalar qutusi",
+                "options": [
+                    "Mexanik",
+                    "Avtomatik",
+                    "Boshqa"
+                ],
+                "required": true,
+                "placeholder": "Tanlash"
+            },
+            {
+                "name": "color",
+                "type": "select",
+                "label": "Rang",
+                "options": [
+                    "Oq",
+                    "Qora",
+                    "Kumush rang"
+                ],
+                "required": true,
+                "placeholder": "Tanlash"
+            },
+            {
+                "name": "motor_engine_size",
+                "type": "int",
+                "label": "Dvigetel hajmi",
+                "options": null,
+                "required": true,
+                "placeholder": "cm³"
+            },
+            {
+                "name": "fuel_type",
+                "type": "select",
+                "label": "Yonilg'i turi",
+                "options": [
+                    "Benzin",
+                    "Dizel",
+                    "Gibrid",
+                    "Gaz/Benzin",
+                    "Electro",
+                    "Boshqa"
+                ],
+                "required": true,
+                "placeholder": "Tanlash"
+            },
+            {
+                "name": "condition",
+                "type": "select",
+                "label": "Mashina holati",
+                "options": [
+                    "Idialniy",
+                    "Yaxshi",
+                    "O'rta",
+                    "Ta'mir talab"
+                ],
+                "required": true,
+                "placeholder": "Tanlash"
+            },
+            {
+                "name": "owners",
+                "type": "select",
+                "label": "Mulkdor soni",
+                "options": [
+                    "1",
+                    "2",
+                    "3",
+                    "4+"
+                ],
+                "required": false,
+                "placeholder": "Tanlash"
+            },
+            {
+                "name": "car_option",
+                "type": "multiselect",
+                "label": "Qoshimcha opsiyalar",
+                "options": [
+                    "Bojxonada rasmiylashtirilgan",
+                    "Konditsioner",
+                    "Elektr ko'zgular",
+                    "Oxoronna sistema",
+                    "El. oyna go'targichlar",
+                    "Parktornik"
+                ],
+                "required": false,
+                "placeholder": null
+            }
+        ],
+        "count_products": 1,
+        "lft": 30,
+        "rght": 33,
+        "tree_id": 11,
+        "level": 1
+    }
+},
+{
+    "model": "apps.category",
+    "pk": 3,
+    "fields": {
+        "slug": "kochmas-mulk",
+        "image": "category/2026/02/25/nedvizhimost-1-1x.png",
+        "name": "Ko'chmas mulk",
+        "parent": null,
+        "attribute": null,
+        "count_products": 0,
+        "lft": 1,
+        "rght": 12,
+        "tree_id": 6,
+        "level": 0
+    }
+},
+{
+    "model": "apps.category",
+    "pk": 4,
+    "fields": {
+        "slug": "kvartiralar",
+        "image": "",
+        "name": "Kvartiralar",
+        "parent": 3,
+        "attribute": null,
+        "count_products": 0,
+        "lft": 4,
+        "rght": 7,
+        "tree_id": 6,
+        "level": 1
+    }
+},
+{
+    "model": "apps.category",
+    "pk": 5,
+    "fields": {
+        "slug": "elektr-jihozlari",
+        "image": "category/2026/02/25/elektronika-37-1x.png",
+        "name": "Elektr jihozlari",
+        "parent": null,
+        "attribute": null,
+        "count_products": 0,
+        "lft": 1,
+        "rght": 28,
+        "tree_id": 3,
+        "level": 0
+    }
+},
+{
+    "model": "apps.category",
+    "pk": 6,
+    "fields": {
+        "slug": "sotish",
+        "image": "",
+        "name": "Sotish",
+        "parent": 4,
+        "attribute": null,
+        "count_products": 0,
+        "lft": 5,
+        "rght": 6,
+        "tree_id": 6,
+        "level": 2
+    }
+},
+{
+    "model": "apps.category",
+    "pk": 7,
+    "fields": {
+        "slug": "aftobuslar",
+        "image": "",
+        "name": "Aftobuslar",
+        "parent": 1,
+        "attribute": null,
+        "count_products": 0,
+        "lft": 4,
+        "rght": 5,
+        "tree_id": 11,
+        "level": 1
+    }
+},
+{
+    "model": "apps.category",
+    "pk": 8,
+    "fields": {
+        "slug": "chevrolet",
+        "image": "category/2026/03/02/Chevrolet_1.jpg",
+        "name": "Chevrolet",
+        "parent": 2,
+        "attribute": [
+            {
+                "name": "terms_of_sale",
+                "type": "multiselect",
+                "label": "sotish sharlari",
+                "options": [
+                    "Oddiy sotish",
+                    "Trade-in",
+                    "Kredit",
+                    "Arenda",
+                    "Lizing",
+                    "Almashtirish mumkin",
+                    "Bo'lib to'lash"
+                ],
+                "required": false,
+                "placeholder": null
+            },
+            {
+                "name": "motor_year",
+                "type": "int",
+                "label": "Ishlab chiqarish yili",
+                "options": null,
+                "required": true,
+                "placeholder": null
+            },
+            {
+                "name": "model",
+                "type": "select",
+                "label": "Model",
+                "options": [
+                    "Cobolt",
+                    "Damas",
+                    "Epica"
+                ],
+                "required": true,
+                "placeholder": "Tanlash"
+            },
+            {
+                "name": "car_body",
+                "type": "select",
+                "label": "Kuzov turi",
+                "options": [
+                    "Kabriolet",
+                    "Pikap",
+                    "Kupe",
+                    "Universal",
+                    "Xetchbek",
+                    "Miniver",
+                    "Yo'l tanlamas",
+                    "Sedan",
+                    "Boshqa"
+                ],
+                "required": true,
+                "placeholder": "Tanlash"
+            },
+            {
+                "name": "motor_mileage",
+                "type": "int",
+                "label": "Bosgan yo'li",
+                "options": [
+                    "Kabriolet",
+                    "Pikap",
+                    "Kupe",
+                    "Universal",
+                    "Xetchbek",
+                    "Miniver",
+                    "Yo'l tanlamas",
+                    "Sedan",
+                    "Boshqa"
+                ],
+                "required": false,
+                "placeholder": "km"
+            },
+            {
+                "name": "transmission_type",
+                "type": "select",
+                "label": "Uzatmalar qutusi",
+                "options": [
+                    "Mexanik",
+                    "Avtomatik",
+                    "Boshqa"
+                ],
+                "required": true,
+                "placeholder": "Tanlash"
+            },
+            {
+                "name": "color",
+                "type": "select",
+                "label": "Rang",
+                "options": [
+                    "Oq",
+                    "Qora",
+                    "Kumush rang"
+                ],
+                "required": true,
+                "placeholder": "Tanlash"
+            },
+            {
+                "name": "motor_engine_size",
+                "type": "int",
+                "label": "Dvigetel hajmi",
+                "options": null,
+                "required": true,
+                "placeholder": "cm³"
+            },
+            {
+                "name": "fuel_type",
+                "type": "select",
+                "label": "Yonilg'i turi",
+                "options": [
+                    "Benzin",
+                    "Dizel",
+                    "Gibrid",
+                    "Gaz/Benzin",
+                    "Electro",
+                    "Boshqa"
+                ],
+                "required": true,
+                "placeholder": "Tanlash"
+            },
+            {
+                "name": "condition",
+                "type": "select",
+                "label": "Mashina holati",
+                "options": [
+                    "Idialniy",
+                    "Yaxshi",
+                    "O'rta",
+                    "Ta'mir talab"
+                ],
+                "required": true,
+                "placeholder": "Tanlash"
+            },
+            {
+                "name": "owners",
+                "type": "select",
+                "label": "Mulkdor soni",
+                "options": [
+                    "1",
+                    "2",
+                    "3",
+                    "4+"
+                ],
+                "required": false,
+                "placeholder": "Tanlash"
+            },
+            {
+                "name": "car_option",
+                "type": "multiselect",
+                "label": "Qoshimcha opsiyalar",
+                "options": [
+                    "Bojxonada rasmiylashtirilgan",
+                    "Konditsioner",
+                    "Elektr ko'zgular",
+                    "Oxoronna sistema",
+                    "El. oyna go'targichlar",
+                    "Parktornik"
+                ],
+                "required": false,
+                "placeholder": null
+            }
+        ],
+        "count_products": 1,
+        "lft": 31,
+        "rght": 32,
+        "tree_id": 11,
+        "level": 2
+    }
+},
+{
+    "model": "apps.category",
+    "pk": 9,
+    "fields": {
+        "slug": "bolalar-dunyosi",
+        "image": "category/2026/03/10/detskiy-mir-36-1x.png",
+        "name": "Bolalar dunyosi",
+        "parent": null,
+        "attribute": null,
+        "count_products": 0,
+        "lft": 1,
+        "rght": 22,
+        "tree_id": 2,
+        "level": 0
+    }
+},
+{
+    "model": "apps.category",
+    "pk": 10,
+    "fields": {
+        "slug": "ish",
+        "image": "category/2026/03/10/rabota-6-1x.png",
+        "name": "Ish",
+        "parent": null,
+        "attribute": null,
+        "count_products": 0,
+        "lft": 1,
+        "rght": 22,
+        "tree_id": 5,
+        "level": 0
+    }
+},
+{
+    "model": "apps.category",
+    "pk": 11,
+    "fields": {
+        "slug": "hayvonlar",
+        "image": "category/2026/03/10/zhivotnye-35-1x.png",
+        "name": "Hayvonlar",
+        "parent": null,
+        "attribute": null,
+        "count_products": 0,
+        "lft": 1,
+        "rght": 24,
+        "tree_id": 4,
+        "level": 0
+    }
+},
+{
+    "model": "apps.category",
+    "pk": 12,
+    "fields": {
+        "slug": "uy-va-bog",
+        "image": "category/2026/03/10/dom-i-sad-899-1x.png",
+        "name": "Uy va bog'",
+        "parent": null,
+        "attribute": null,
+        "count_products": 0,
+        "lft": 1,
+        "rght": 28,
+        "tree_id": 12,
+        "level": 0
+    }
+},
+{
+    "model": "apps.category",
+    "pk": 13,
+    "fields": {
+        "slug": "xizmatlar",
+        "image": "category/2026/03/10/uslugi-7-1x.png",
+        "name": "Xizmatlar",
+        "parent": null,
+        "attribute": null,
+        "count_products": 0,
+        "lft": 1,
+        "rght": 48,
+        "tree_id": 13,
+        "level": 0
+    }
+},
+{
+    "model": "apps.category",
+    "pk": 14,
+    "fields": {
+        "slug": "moda-va-stil",
+        "image": "category/2026/03/10/moda-i-stil-891-1x.png",
+        "name": "Moda va stil",
+        "parent": null,
+        "attribute": null,
+        "count_products": 0,
+        "lft": 1,
+        "rght": 14,
+        "tree_id": 7,
+        "level": 0
+    }
+},
+{
+    "model": "apps.category",
+    "pk": 15,
+    "fields": {
+        "slug": "xobbi-dam-olishsport",
+        "image": "category/2026/03/10/hobbi-otdyh-i-sport-903-1x.png",
+        "name": "Xobbi, dam olish,sport",
+        "parent": null,
+        "attribute": null,
+        "count_products": 0,
+        "lft": 1,
+        "rght": 16,
+        "tree_id": 14,
+        "level": 0
+    }
+},
+{
+    "model": "apps.category",
+    "pk": 16,
+    "fields": {
+        "slug": "tekinga-beraman",
+        "image": "category/2026/03/12/otdam-darom-1151-1x.png",
+        "name": "Tekinga beraman",
+        "parent": null,
+        "attribute": null,
+        "count_products": 0,
+        "lft": 1,
+        "rght": 2,
+        "tree_id": 10,
+        "level": 0
+    }
+},
+{
+    "model": "apps.category",
+    "pk": 17,
+    "fields": {
+        "slug": "ayirboshlash",
+        "image": "category/2026/03/10/obmen-barter-1153-1x_AMPNBX3.png",
+        "name": "Ayirboshlash",
+        "parent": null,
+        "attribute": null,
+        "count_products": 0,
+        "lft": 1,
+        "rght": 2,
+        "tree_id": 1,
+        "level": 0
+    }
+},
+{
+    "model": "apps.category",
+    "pk": 18,
+    "fields": {
+        "slug": "qurilish-va-tamirlash",
+        "image": "category/2026/03/10/construction_goods_v3-1x.png",
+        "name": "Qurilish va ta'mirlash",
+        "parent": null,
+        "attribute": null,
+        "count_products": 0,
+        "lft": 1,
+        "rght": 2,
+        "tree_id": 8,
+        "level": 0
+    }
+},
+{
+    "model": "apps.category",
+    "pk": 19,
+    "fields": {
+        "slug": "quruvchilar",
+        "image": "category/2026/03/10/from_developer_l2-1x.png",
+        "name": "Quruvchilar",
+        "parent": null,
+        "attribute": null,
+        "count_products": 0,
+        "lft": 1,
+        "rght": 2,
+        "tree_id": 9,
+        "level": 0
+    }
+},
+{
+    "model": "apps.category",
+    "pk": 20,
+    "fields": {
+        "slug": "avto-ehtiyot-qismlari-va-aksessuarlar",
+        "image": "",
+        "name": "Avto ehtiyot qismlari va aksessuarlar",
+        "parent": 1,
+        "attribute": null,
+        "count_products": 0,
+        "lft": 6,
+        "rght": 7,
+        "tree_id": 11,
+        "level": 1
+    }
+},
+{
+    "model": "apps.category",
+    "pk": 21,
+    "fields": {
+        "slug": "shinalar-disklar-va-gildiraklar",
+        "image": "",
+        "name": "Shinalar, disklar va g'ildiraklar",
+        "parent": 1,
+        "attribute": null,
+        "count_products": 0,
+        "lft": 24,
+        "rght": 25,
+        "tree_id": 11,
+        "level": 1
+    }
+},
+{
+    "model": "apps.category",
+    "pk": 22,
+    "fields": {
+        "slug": "moto",
+        "image": "",
+        "name": "Moto",
+        "parent": 1,
+        "attribute": [
+            {
+                "name": "motor_mileage",
+                "type": "int",
+                "label": "Bosgan yo'li",
+                "options": null,
+                "required": false,
+                "placeholder": "km"
+            },
+            {
+                "name": "transmission_type",
+                "type": "select",
+                "label": "Uzatmalar qutusi",
+                "options": [
+                    "Mexanik",
+                    "Avtomatik",
+                    "Boshqa"
+                ],
+                "required": true,
+                "placeholder": "Tanlash"
+            },
+            {
+                "name": "motor_engine_size",
+                "type": "int",
+                "label": "Dvigetel hajmi",
+                "options": null,
+                "required": true,
+                "placeholder": "cm³"
+            },
+            {
+                "name": "motor_year",
+                "type": "int",
+                "label": "Ishlab chiqarish yili",
+                "options": null,
+                "required": true,
+                "placeholder": null
+            }
+        ],
+        "count_products": 0,
+        "lft": 18,
+        "rght": 19,
+        "tree_id": 11,
+        "level": 1
+    }
+},
+{
+    "model": "apps.category",
+    "pk": 23,
+    "fields": {
+        "slug": "moto-ehtiyot-qismlari-va-aksessuarlar",
+        "image": "",
+        "name": "Moto ehtiyot qismlari va aksessuarlar",
+        "parent": 1,
+        "attribute": null,
+        "count_products": 0,
+        "lft": 20,
+        "rght": 21,
+        "tree_id": 11,
+        "level": 1
+    }
+},
+{
+    "model": "apps.category",
+    "pk": 24,
+    "fields": {
+        "slug": "boshqa-transport",
+        "image": "",
+        "name": "Boshqa transport",
+        "parent": 1,
+        "attribute": null,
+        "count_products": 0,
+        "lft": 12,
+        "rght": 13,
+        "tree_id": 11,
+        "level": 1
+    }
+},
+{
+    "model": "apps.category",
+    "pk": 25,
+    "fields": {
+        "slug": "avtobuslar",
+        "image": "",
+        "name": "Avtobuslar",
+        "parent": 1,
+        "attribute": null,
+        "count_products": 0,
+        "lft": 8,
+        "rght": 9,
+        "tree_id": 11,
+        "level": 1
+    }
+},
+{
+    "model": "apps.category",
+    "pk": 26,
+    "fields": {
+        "slug": "yuk-mashinalari",
+        "image": "",
+        "name": "Yuk mashinalari",
+        "parent": 1,
+        "attribute": null,
+        "count_products": 0,
+        "lft": 34,
+        "rght": 35,
+        "tree_id": 11,
+        "level": 1
+    }
+},
+{
+    "model": "apps.category",
+    "pk": 27,
+    "fields": {
+        "slug": "tirkamalar",
+        "image": "",
+        "name": "Tirkamalar",
+        "parent": 1,
+        "attribute": null,
+        "count_products": 0,
+        "lft": 28,
+        "rght": 29,
+        "tree_id": 11,
+        "level": 1
+    }
+},
+{
+    "model": "apps.category",
+    "pk": 28,
+    "fields": {
+        "slug": "maxsus-texnika",
+        "image": "",
+        "name": "Maxsus texnika",
+        "parent": 1,
+        "attribute": null,
+        "count_products": 0,
+        "lft": 14,
+        "rght": 15,
+        "tree_id": 11,
+        "level": 1
+    }
+},
+{
+    "model": "apps.category",
+    "pk": 29,
+    "fields": {
+        "slug": "qishloq-xojalik-texnikasi",
+        "image": "",
+        "name": "Qishloq xo'jalik texnikasi",
+        "parent": 1,
+        "attribute": null,
+        "count_products": 0,
+        "lft": 22,
+        "rght": 23,
+        "tree_id": 11,
+        "level": 1
+    }
+},
+{
+    "model": "apps.category",
+    "pk": 30,
+    "fields": {
+        "slug": "maxsus-texnika-uchun-qismlar",
+        "image": "",
+        "name": "Maxsus texnika uchun qismlar",
+        "parent": 1,
+        "attribute": null,
+        "count_products": 0,
+        "lft": 16,
+        "rght": 17,
+        "tree_id": 11,
+        "level": 1
+    }
+},
+{
+    "model": "apps.category",
+    "pk": 31,
+    "fields": {
+        "slug": "suv-transporti",
+        "image": "",
+        "name": "Suv transporti",
+        "parent": 1,
+        "attribute": null,
+        "count_products": 0,
+        "lft": 26,
+        "rght": 27,
+        "tree_id": 11,
+        "level": 1
+    }
+},
+{
+    "model": "apps.category",
+    "pk": 32,
+    "fields": {
+        "slug": "boshqa-ehtiyot-qismlar",
+        "image": "",
+        "name": "Boshqa ehtiyot qismlar",
+        "parent": 1,
+        "attribute": null,
+        "count_products": 0,
+        "lft": 10,
+        "rght": 11,
+        "tree_id": 11,
+        "level": 1
+    }
+},
+{
+    "model": "apps.category",
+    "pk": 33,
+    "fields": {
+        "slug": "telefonlar",
+        "image": "",
+        "name": "Telefonlar",
+        "parent": 5,
+        "attribute": null,
+        "count_products": 0,
+        "lft": 20,
+        "rght": 21,
+        "tree_id": 3,
+        "level": 1
+    }
+},
+{
+    "model": "apps.category",
+    "pk": 34,
+    "fields": {
+        "slug": "audiotexnika",
+        "image": "",
+        "name": "Audiotexnika",
+        "parent": 5,
+        "attribute": null,
+        "count_products": 0,
+        "lft": 6,
+        "rght": 7,
+        "tree_id": 3,
+        "level": 1
+    }
+},
+{
+    "model": "apps.category",
+    "pk": 35,
+    "fields": {
+        "slug": "oshxona-uchun-texnika",
+        "image": "",
+        "name": "Oshxona uchun texnika",
+        "parent": 5,
+        "attribute": null,
+        "count_products": 0,
+        "lft": 18,
+        "rght": 19,
+        "tree_id": 3,
+        "level": 1
+    }
+},
+{
+    "model": "apps.category",
+    "pk": 36,
+    "fields": {
+        "slug": "boshqa-elektronika",
+        "image": "",
+        "name": "Boshqa elektronika",
+        "parent": 5,
+        "attribute": null,
+        "count_products": 0,
+        "lft": 8,
+        "rght": 9,
+        "tree_id": 3,
+        "level": 1
+    }
+},
+{
+    "model": "apps.category",
+    "pk": 37,
+    "fields": {
+        "slug": "kompyuterlar",
+        "image": "",
+        "name": "Kompyuterlar",
+        "parent": 5,
+        "attribute": null,
+        "count_products": 0,
+        "lft": 14,
+        "rght": 15,
+        "tree_id": 3,
+        "level": 1
+    }
+},
+{
+    "model": "apps.category",
+    "pk": 38,
+    "fields": {
+        "slug": "aqlli-qurilmalar",
+        "image": "",
+        "name": "Aqlli qurilmalar",
+        "parent": 5,
+        "attribute": null,
+        "count_products": 0,
+        "lft": 4,
+        "rght": 5,
+        "tree_id": 3,
+        "level": 1
+    }
+},
+{
+    "model": "apps.category",
+    "pk": 39,
+    "fields": {
+        "slug": "iqlim-qurilmalari",
+        "image": "",
+        "name": "Iqlim qurilmalari",
+        "parent": 5,
+        "attribute": null,
+        "count_products": 0,
+        "lft": 12,
+        "rght": 13,
+        "tree_id": 3,
+        "level": 1
+    }
+},
+{
+    "model": "apps.category",
+    "pk": 40,
+    "fields": {
+        "slug": "foto-video",
+        "image": "",
+        "name": "Foto/ video",
+        "parent": 5,
+        "attribute": null,
+        "count_products": 0,
+        "lft": 10,
+        "rght": 11,
+        "tree_id": 3,
+        "level": 1
+    }
+},
+{
+    "model": "apps.category",
+    "pk": 41,
+    "fields": {
+        "slug": "oyinlar-va-oyin-anjomlari",
+        "image": "",
+        "name": "O'yinlar va o'yin anjomlari",
+        "parent": 5,
+        "attribute": null,
+        "count_products": 0,
+        "lft": 16,
+        "rght": 17,
+        "tree_id": 3,
+        "level": 1
+    }
+},
+{
+    "model": "apps.category",
+    "pk": 42,
+    "fields": {
+        "slug": "yakka-tartibdagi-parvarish",
+        "image": "",
+        "name": "Yakka tartibdagi parvarish",
+        "parent": 5,
+        "attribute": null,
+        "count_products": 0,
+        "lft": 26,
+        "rght": 27,
+        "tree_id": 3,
+        "level": 1
+    }
+},
+{
+    "model": "apps.category",
+    "pk": 43,
+    "fields": {
+        "slug": "tv-videoteknika",
+        "image": "",
+        "name": "Tv/ videoteknika",
+        "parent": 5,
+        "attribute": null,
+        "count_products": 0,
+        "lft": 22,
+        "rght": 23,
+        "tree_id": 3,
+        "level": 1
+    }
+},
+{
+    "model": "apps.category",
+    "pk": 44,
+    "fields": {
+        "slug": "uy-uchun-texnika",
+        "image": "",
+        "name": "Uy uchun texnika",
+        "parent": 5,
+        "attribute": null,
+        "count_products": 0,
+        "lft": 24,
+        "rght": 25,
+        "tree_id": 3,
+        "level": 1
+    }
+},
+{
+    "model": "apps.category",
+    "pk": 45,
+    "fields": {
+        "slug": "aksessuarlar-va-komplekt-jihozlar",
+        "image": "",
+        "name": "Aksessuarlar va komplekt jihozlar",
+        "parent": 5,
+        "attribute": null,
+        "count_products": 0,
+        "lft": 2,
+        "rght": 3,
+        "tree_id": 3,
+        "level": 1
+    }
+},
+{
+    "model": "apps.category",
+    "pk": 46,
+    "fields": {
+        "slug": "bolalar-kiyimi",
+        "image": "",
+        "name": "Bolalar kiyimi",
+        "parent": 9,
+        "attribute": null,
+        "count_products": 0,
+        "lft": 4,
+        "rght": 5,
+        "tree_id": 2,
+        "level": 1
+    }
+},
+{
+    "model": "apps.category",
+    "pk": 47,
+    "fields": {
+        "slug": "bolalar-mebeli",
+        "image": "",
+        "name": "Bolalar mebeli",
+        "parent": 9,
+        "attribute": null,
+        "count_products": 0,
+        "lft": 8,
+        "rght": 9,
+        "tree_id": 2,
+        "level": 1
+    }
+},
+{
+    "model": "apps.category",
+    "pk": 48,
+    "fields": {
+        "slug": "maktab-oquvchilari-uchun-mahsulotlar",
+        "image": "",
+        "name": "Maktab o'quvchilari uchun mahsulotlar",
+        "parent": 9,
+        "attribute": null,
+        "count_products": 0,
+        "lft": 16,
+        "rght": 17,
+        "tree_id": 2,
+        "level": 1
+    }
+},
+{
+    "model": "apps.category",
+    "pk": 49,
+    "fields": {
+        "slug": "bolalar-oyoq-kiyimi",
+        "image": "",
+        "name": "Bolalar oyoq kiyimi",
+        "parent": 9,
+        "attribute": null,
+        "count_products": 0,
+        "lft": 10,
+        "rght": 11,
+        "tree_id": 2,
+        "level": 1
+    }
+},
+{
+    "model": "apps.category",
+    "pk": 50,
+    "fields": {
+        "slug": "oyinchoqlar",
+        "image": "",
+        "name": "O'yinchoqlar",
+        "parent": 9,
+        "attribute": null,
+        "count_products": 0,
+        "lft": 18,
+        "rght": 19,
+        "tree_id": 2,
+        "level": 1
+    }
+},
+{
+    "model": "apps.category",
+    "pk": 51,
+    "fields": {
+        "slug": "boshqa-bolalar-mahsulotlari",
+        "image": "",
+        "name": "Boshqa bolalar mahsulotlari",
+        "parent": 9,
+        "attribute": null,
+        "count_products": 0,
+        "lft": 14,
+        "rght": 15,
+        "tree_id": 2,
+        "level": 1
+    }
+},
+{
+    "model": "apps.category",
+    "pk": 52,
+    "fields": {
+        "slug": "bolalar-kolyaskalari",
+        "image": "",
+        "name": "Bolalar kolyaskalari",
+        "parent": 9,
+        "attribute": null,
+        "count_products": 0,
+        "lft": 6,
+        "rght": 7,
+        "tree_id": 2,
+        "level": 1
+    }
+},
+{
+    "model": "apps.category",
+    "pk": 53,
+    "fields": {
+        "slug": "bolalar-transporti",
+        "image": "",
+        "name": "Bolalar transporti",
+        "parent": 9,
+        "attribute": null,
+        "count_products": 0,
+        "lft": 12,
+        "rght": 13,
+        "tree_id": 2,
+        "level": 1
+    }
+},
+{
+    "model": "apps.category",
+    "pk": 54,
+    "fields": {
+        "slug": "bolalar-avtoorindiqlari",
+        "image": "",
+        "name": "Bolalar avtoo'rindiqlari",
+        "parent": 9,
+        "attribute": null,
+        "count_products": 0,
+        "lft": 2,
+        "rght": 3,
+        "tree_id": 2,
+        "level": 1
+    }
+},
+{
+    "model": "apps.category",
+    "pk": 55,
+    "fields": {
+        "slug": "oziqlantirish",
+        "image": "",
+        "name": "Oziqlantirish",
+        "parent": 9,
+        "attribute": null,
+        "count_products": 0,
+        "lft": 20,
+        "rght": 21,
+        "tree_id": 2,
+        "level": 1
+    }
+},
+{
+    "model": "apps.category",
+    "pk": 56,
+    "fields": {
+        "slug": "sutkalik-ijarasi",
+        "image": "",
+        "name": "Sutkalik ijarasi",
+        "parent": 3,
+        "attribute": null,
+        "count_products": 0,
+        "lft": 10,
+        "rght": 11,
+        "tree_id": 6,
+        "level": 1
+    }
+},
+{
+    "model": "apps.category",
+    "pk": 57,
+    "fields": {
+        "slug": "garajlar-turargohlar",
+        "image": "",
+        "name": "Garajlar / turargohlar",
+        "parent": 3,
+        "attribute": null,
+        "count_products": 0,
+        "lft": 2,
+        "rght": 3,
+        "tree_id": 6,
+        "level": 1
+    }
+},
+{
+    "model": "apps.category",
+    "pk": 59,
+    "fields": {
+        "slug": "chakana-savdo-sotuvlar",
+        "image": "",
+        "name": "Chakana savdo-sotuvlar",
+        "parent": 10,
+        "attribute": null,
+        "count_products": 0,
+        "lft": 2,
+        "rght": 3,
+        "tree_id": 5,
+        "level": 1
+    }
+},
+{
+    "model": "apps.category",
+    "pk": 60,
+    "fields": {
+        "slug": "yurist-buxgalteriya-moliya",
+        "image": "",
+        "name": "Yurist / buxgalteriya / moliya",
+        "parent": 10,
+        "attribute": null,
+        "count_products": 0,
+        "lft": 20,
+        "rght": 21,
+        "tree_id": 5,
+        "level": 1
+    }
+},
+{
+    "model": "apps.category",
+    "pk": 61,
+    "fields": {
+        "slug": "turizm-mehmonxona-oyin-kulgi",
+        "image": "",
+        "name": "Turizm / mehmonxona / o'yin-kulgi",
+        "parent": 10,
+        "attribute": null,
+        "count_products": 0,
+        "lft": 18,
+        "rght": 19,
+        "tree_id": 5,
+        "level": 1
+    }
+},
+{
+    "model": "apps.category",
+    "pk": 62,
+    "fields": {
+        "slug": "it-telekom-kompyuterlar",
+        "image": "",
+        "name": "It-telekom-kompyuterlar",
+        "parent": 10,
+        "attribute": null,
+        "count_products": 0,
+        "lft": 4,
+        "rght": 5,
+        "tree_id": 5,
+        "level": 1
+    }
+},
+{
+    "model": "apps.category",
+    "pk": 63,
+    "fields": {
+        "slug": "menejment-hr-menejer-ofis",
+        "image": "",
+        "name": "Menejment / HR menejer / Ofis",
+        "parent": 10,
+        "attribute": null,
+        "count_products": 0,
+        "lft": 8,
+        "rght": 9,
+        "tree_id": 5,
+        "level": 1
+    }
+},
+{
+    "model": "apps.category",
+    "pk": 64,
+    "fields": {
+        "slug": "qisman-bandlik",
+        "image": "",
+        "name": "Qisman bandlik",
+        "parent": 10,
+        "attribute": null,
+        "count_products": 0,
+        "lft": 10,
+        "rght": 11,
+        "tree_id": 5,
+        "level": 1
+    }
+},
+{
+    "model": "apps.category",
+    "pk": 65,
+    "fields": {
+        "slug": "transport-logistika-ombor",
+        "image": "",
+        "name": "Transport / logistika / ombor",
+        "parent": 10,
+        "attribute": null,
+        "count_products": 0,
+        "lft": 16,
+        "rght": 17,
+        "tree_id": 5,
+        "level": 1
+    }
+},
+{
+    "model": "apps.category",
+    "pk": 66,
+    "fields": {
+        "slug": "qoriqlash-xavfsizlik",
+        "image": "",
+        "name": "Qo'riqlash-xavfsizlik",
+        "parent": 10,
+        "attribute": null,
+        "count_products": 0,
+        "lft": 12,
+        "rght": 13,
+        "tree_id": 5,
+        "level": 1
+    }
+},
+{
+    "model": "apps.category",
+    "pk": 67,
+    "fields": {
+        "slug": "talim",
+        "image": "",
+        "name": "Ta'lim",
+        "parent": 10,
+        "attribute": null,
+        "count_products": 0,
+        "lft": 14,
+        "rght": 15,
+        "tree_id": 5,
+        "level": 1
+    }
+},
+{
+    "model": "apps.category",
+    "pk": 69,
+    "fields": {
+        "slug": "itlar",
+        "image": "",
+        "name": "Itlar",
+        "parent": 11,
+        "attribute": null,
+        "count_products": 0,
+        "lft": 8,
+        "rght": 9,
+        "tree_id": 4,
+        "level": 1
+    }
+},
+{
+    "model": "apps.category",
+    "pk": 70,
+    "fields": {
+        "slug": "kemiruvchilar",
+        "image": "",
+        "name": "Kemiruvchilar",
+        "parent": 11,
+        "attribute": null,
+        "count_products": 0,
+        "lft": 10,
+        "rght": 11,
+        "tree_id": 4,
+        "level": 1
+    }
+},
+{
+    "model": "apps.category",
+    "pk": 71,
+    "fields": {
+        "slug": "topilmalar-idorasi",
+        "image": "",
+        "name": "Topilmalar idorasi",
+        "parent": 11,
+        "attribute": null,
+        "count_products": 0,
+        "lft": 22,
+        "rght": 23,
+        "tree_id": 4,
+        "level": 1
+    }
+},
+{
+    "model": "apps.category",
+    "pk": 72,
+    "fields": {
+        "slug": "mushuklar",
+        "image": "",
+        "name": "Mushuklar",
+        "parent": 11,
+        "attribute": null,
+        "count_products": 0,
+        "lft": 12,
+        "rght": 13,
+        "tree_id": 4,
+        "level": 1
+    }
+},
+{
+    "model": "apps.category",
+    "pk": 73,
+    "fields": {
+        "slug": "qishloq-xojalik-hayvonlari",
+        "image": "",
+        "name": "Qishloq xo'jalik hayvonlari",
+        "parent": 11,
+        "attribute": null,
+        "count_products": 0,
+        "lft": 14,
+        "rght": 15,
+        "tree_id": 4,
+        "level": 1
+    }
+},
+{
+    "model": "apps.category",
+    "pk": 74,
+    "fields": {
+        "slug": "boshqa-hayvonlar",
+        "image": "",
+        "name": "Boshqa hayvonlar",
+        "parent": 11,
+        "attribute": null,
+        "count_products": 0,
+        "lft": 4,
+        "rght": 5,
+        "tree_id": 4,
+        "level": 1
+    }
+},
+{
+    "model": "apps.category",
+    "pk": 75,
+    "fields": {
+        "slug": "akvarium-baliqlari",
+        "image": "",
+        "name": "Akvarium baliqlari",
+        "parent": 11,
+        "attribute": null,
+        "count_products": 0,
+        "lft": 2,
+        "rght": 3,
+        "tree_id": 4,
+        "level": 1
+    }
+},
+{
+    "model": "apps.category",
+    "pk": 76,
+    "fields": {
+        "slug": "hayvonlar-uchun-mahsulotlar",
+        "image": "",
+        "name": "Hayvonlar uchun mahsulotlar",
+        "parent": 11,
+        "attribute": null,
+        "count_products": 0,
+        "lft": 6,
+        "rght": 7,
+        "tree_id": 4,
+        "level": 1
+    }
+},
+{
+    "model": "apps.category",
+    "pk": 77,
+    "fields": {
+        "slug": "tekinga-hayvonlar",
+        "image": "",
+        "name": "Tekinga hayvonlar",
+        "parent": 11,
+        "attribute": null,
+        "count_products": 0,
+        "lft": 18,
+        "rght": 19,
+        "tree_id": 4,
+        "level": 1
+    }
+},
+{
+    "model": "apps.category",
+    "pk": 78,
+    "fields": {
+        "slug": "qushlar",
+        "image": "",
+        "name": "Qushlar",
+        "parent": 11,
+        "attribute": null,
+        "count_products": 0,
+        "lft": 16,
+        "rght": 17,
+        "tree_id": 4,
+        "level": 1
+    }
+},
+{
+    "model": "apps.category",
+    "pk": 79,
+    "fields": {
+        "slug": "toqish",
+        "image": "",
+        "name": "To'qish",
+        "parent": 11,
+        "attribute": null,
+        "count_products": 0,
+        "lft": 20,
+        "rght": 21,
+        "tree_id": 4,
+        "level": 1
+    }
+},
+{
+    "model": "apps.category",
+    "pk": 80,
+    "fields": {
+        "slug": "mebel",
+        "image": "",
+        "name": "Mebel",
+        "parent": 12,
+        "attribute": null,
+        "count_products": 0,
+        "lft": 16,
+        "rght": 17,
+        "tree_id": 12,
+        "level": 1
+    }
+},
+{
+    "model": "apps.category",
+    "pk": 81,
+    "fields": {
+        "slug": "jihozlar",
+        "image": "",
+        "name": "Jihozlar",
+        "parent": 12,
+        "attribute": null,
+        "count_products": 0,
+        "lft": 12,
+        "rght": 13,
+        "tree_id": 12,
+        "level": 1
+    }
+},
+{
+    "model": "apps.category",
+    "pk": 82,
+    "fields": {
+        "slug": "xojalik-jihozlari-maishiy-kimyo",
+        "image": "",
+        "name": "Xo'jalik jihozlari, maishiy kimyo",
+        "parent": 12,
+        "attribute": null,
+        "count_products": 0,
+        "lft": 24,
+        "rght": 25,
+        "tree_id": 12,
+        "level": 1
+    }
+},
+{
+    "model": "apps.category",
+    "pk": 83,
+    "fields": {
+        "slug": "uy-uchun-boshqa-mahsulotlar",
+        "image": "",
+        "name": "Uy uchun boshqa mahsulotlar",
+        "parent": 12,
+        "attribute": null,
+        "count_products": 0,
+        "lft": 22,
+        "rght": 23,
+        "tree_id": 12,
+        "level": 1
+    }
+},
+{
+    "model": "apps.category",
+    "pk": 84,
+    "fields": {
+        "slug": "bog-tomorqa",
+        "image": "",
+        "name": "Bog'-tomorqa",
+        "parent": 12,
+        "attribute": null,
+        "count_products": 0,
+        "lft": 6,
+        "rght": 7,
+        "tree_id": 12,
+        "level": 1
+    }
+},
+{
+    "model": "apps.category",
+    "pk": 85,
+    "fields": {
+        "slug": "xona-osimliklari",
+        "image": "",
+        "name": "Xona o'simliklari",
+        "parent": 12,
+        "attribute": null,
+        "count_products": 0,
+        "lft": 26,
+        "rght": 27,
+        "tree_id": 12,
+        "level": 1
+    }
+},
+{
+    "model": "apps.category",
+    "pk": 86,
+    "fields": {
+        "slug": "kanstovarlar-chiqim-materiallari",
+        "image": "",
+        "name": "Kanstovarlar-chiqim materiallari",
+        "parent": 12,
+        "attribute": null,
+        "count_products": 0,
+        "lft": 14,
+        "rght": 15,
+        "tree_id": 12,
+        "level": 1
+    }
+},
+{
+    "model": "apps.category",
+    "pk": 87,
+    "fields": {
+        "slug": "interyer-jihozlari",
+        "image": "",
+        "name": "Interyer jihozlari",
+        "parent": 12,
+        "attribute": null,
+        "count_products": 0,
+        "lft": 10,
+        "rght": 11,
+        "tree_id": 12,
+        "level": 1
+    }
+},
+{
+    "model": "apps.category",
+    "pk": 88,
+    "fields": {
+        "slug": "idish-tovoq-oshxona-anjomlari",
+        "image": "",
+        "name": "Idish-tovoq, oshxona anjomlari",
+        "parent": 12,
+        "attribute": null,
+        "count_products": 0,
+        "lft": 8,
+        "rght": 9,
+        "tree_id": 12,
+        "level": 1
+    }
+},
+{
+    "model": "apps.category",
+    "pk": 89,
+    "fields": {
+        "slug": "oziq-ovqat-ichimliklar",
+        "image": "",
+        "name": "Oziq-ovqat / Ichimliklar",
+        "parent": 12,
+        "attribute": null,
+        "count_products": 0,
+        "lft": 18,
+        "rght": 19,
+        "tree_id": 12,
+        "level": 1
+    }
+},
+{
+    "model": "apps.category",
+    "pk": 90,
+    "fields": {
+        "slug": "qurilishtamirlash-uchun-tovarlar",
+        "image": "",
+        "name": "Qurilish/ta'mirlash uchun tovarlar",
+        "parent": 12,
+        "attribute": null,
+        "count_products": 0,
+        "lft": 20,
+        "rght": 21,
+        "tree_id": 12,
+        "level": 1
+    }
+},
+{
+    "model": "apps.category",
+    "pk": 91,
+    "fields": {
+        "slug": "bog-anjomlari",
+        "image": "",
+        "name": "Bog' anjomlari",
+        "parent": 12,
+        "attribute": null,
+        "count_products": 0,
+        "lft": 4,
+        "rght": 5,
+        "tree_id": 12,
+        "level": 1
+    }
+},
+{
+    "model": "apps.category",
+    "pk": 92,
+    "fields": {
+        "slug": "basseynlar",
+        "image": "",
+        "name": "Basseynlar",
+        "parent": 12,
+        "attribute": null,
+        "count_products": 0,
+        "lft": 2,
+        "rght": 3,
+        "tree_id": 12,
+        "level": 1
+    }
+},
+{
+    "model": "apps.category",
+    "pk": 93,
+    "fields": {
+        "slug": "avto-moto-xizmatlar",
+        "image": "",
+        "name": "Avto-moto xizmatlar",
+        "parent": 13,
+        "attribute": null,
+        "count_products": 0,
+        "lft": 2,
+        "rght": 3,
+        "tree_id": 13,
+        "level": 1
+    }
+},
+{
+    "model": "apps.category",
+    "pk": 94,
+    "fields": {
+        "slug": "enaga-kasalga-qarovchilar",
+        "image": "",
+        "name": "Enaga / kasalga qarovchilar",
+        "parent": 13,
+        "attribute": null,
+        "count_products": 0,
+        "lft": 12,
+        "rght": 13,
+        "tree_id": 13,
+        "level": 1
+    }
+},
+{
+    "model": "apps.category",
+    "pk": 95,
+    "fields": {
+        "slug": "texnika-xizmati-tamirlash",
+        "image": "",
+        "name": "Texnika xizmati / ta'mirlash",
+        "parent": 13,
+        "attribute": null,
+        "count_products": 0,
+        "lft": 36,
+        "rght": 37,
+        "tree_id": 13,
+        "level": 1
+    }
+},
+{
+    "model": "apps.category",
+    "pk": 96,
+    "fields": {
+        "slug": "biznes-uchun-xizmatlari",
+        "image": "",
+        "name": "Biznes uchun xizmatlari",
+        "parent": 13,
+        "attribute": null,
+        "count_products": 0,
+        "lft": 4,
+        "rght": 5,
+        "tree_id": 13,
+        "level": 1
+    }
+},
+{
+    "model": "apps.category",
+    "pk": 97,
+    "fields": {
+        "slug": "tarjima-yozuv-xizmatlari",
+        "image": "",
+        "name": "Tarjima / yozuv xizmatlari",
+        "parent": 13,
+        "attribute": null,
+        "count_products": 0,
+        "lft": 32,
+        "rght": 33,
+        "tree_id": 13,
+        "level": 1
+    }
+},
+{
+    "model": "apps.category",
+    "pk": 98,
+    "fields": {
+        "slug": "taomlar-yetkazish",
+        "image": "",
+        "name": "Taomlar yetkazish",
+        "parent": 13,
+        "attribute": null,
+        "count_products": 0,
+        "lft": 30,
+        "rght": 31,
+        "tree_id": 13,
+        "level": 1
+    }
+},
+{
+    "model": "apps.category",
+    "pk": 99,
+    "fields": {
+        "slug": "gozallik-salomatlik",
+        "image": "",
+        "name": "Go'zallik-salomatlik",
+        "parent": 13,
+        "attribute": null,
+        "count_products": 0,
+        "lft": 14,
+        "rght": 15,
+        "tree_id": 13,
+        "level": 1
+    }
+},
+{
+    "model": "apps.category",
+    "pk": 100,
+    "fields": {
+        "slug": "uskunalarni-sotish",
+        "image": "",
+        "name": "Uskunalarni sotish",
+        "parent": 13,
+        "attribute": null,
+        "count_products": 0,
+        "lft": 42,
+        "rght": 43,
+        "tree_id": 13,
+        "level": 1
+    }
+},
+{
+    "model": "apps.category",
+    "pk": 101,
+    "fields": {
+        "slug": "tashishlar-transport-ijarasi",
+        "image": "",
+        "name": "Tashishlar-transport ijarasi",
+        "parent": 13,
+        "attribute": null,
+        "count_products": 0,
+        "lft": 34,
+        "rght": 35,
+        "tree_id": 13,
+        "level": 1
+    }
+},
+{
+    "model": "apps.category",
+    "pk": 102,
+    "fields": {
+        "slug": "talim-kurslar-repetitorlik-sport",
+        "image": "",
+        "name": "Ta'lim / kurslar / repetitorlik / sport",
+        "parent": 13,
+        "attribute": null,
+        "count_products": 0,
+        "lft": 26,
+        "rght": 27,
+        "tree_id": 13,
+        "level": 1
+    }
+},
+{
+    "model": "apps.category",
+    "pk": 103,
+    "fields": {
+        "slug": "tadbirni-tashkil-etish-fotosurat-video",
+        "image": "",
+        "name": "Tadbirni tashkil etish / fotosurat / video",
+        "parent": 13,
+        "attribute": null,
+        "count_products": 0,
+        "lft": 28,
+        "rght": 29,
+        "tree_id": 13,
+        "level": 1
+    }
+},
+{
+    "model": "apps.category",
+    "pk": 104,
+    "fields": {
+        "slug": "sport-majmuasi",
+        "image": "",
+        "name": "Sport majmuasi",
+        "parent": 13,
+        "attribute": null,
+        "count_products": 0,
+        "lft": 24,
+        "rght": 25,
+        "tree_id": 13,
+        "level": 1
+    }
+},
+{
+    "model": "apps.category",
+    "pk": 105,
+    "fields": {
+        "slug": "tozalash-axlat-tashish-dezinfeksiyalash",
+        "image": "",
+        "name": "Tozalash / axlat tashish / dezinfeksiyalash",
+        "parent": 13,
+        "attribute": null,
+        "count_products": 0,
+        "lft": 38,
+        "rght": 39,
+        "tree_id": 13,
+        "level": 1
+    }
+},
+{
+    "model": "apps.category",
+    "pk": 106,
+    "fields": {
+        "slug": "biznesni-sotish",
+        "image": "",
+        "name": "Biznesni sotish",
+        "parent": 13,
+        "attribute": null,
+        "count_products": 0,
+        "lft": 6,
+        "rght": 7,
+        "tree_id": 13,
+        "level": 1
+    }
+},
+{
+    "model": "apps.category",
+    "pk": 107,
+    "fields": {
+        "slug": "mahsulotlar-prokati",
+        "image": "",
+        "name": "Mahsulotlar prokati",
+        "parent": 13,
+        "attribute": null,
+        "count_products": 0,
+        "lft": 18,
+        "rght": 19,
+        "tree_id": 13,
+        "level": 1
+    }
+},
+{
+    "model": "apps.category",
+    "pk": 108,
+    "fields": {
+        "slug": "buxgalteriya-moliyaviy-xizmatlar",
+        "image": "",
+        "name": "Buxgalteriya / moliyaviy xizmatlar",
+        "parent": 13,
+        "attribute": null,
+        "count_products": 0,
+        "lft": 10,
+        "rght": 11,
+        "tree_id": 13,
+        "level": 1
+    }
+},
+{
+    "model": "apps.category",
+    "pk": 109,
+    "fields": {
+        "slug": "turizm",
+        "image": "",
+        "name": "Turizm",
+        "parent": 13,
+        "attribute": null,
+        "count_products": 0,
+        "lft": 40,
+        "rght": 41,
+        "tree_id": 13,
+        "level": 1
+    }
+},
+{
+    "model": "apps.category",
+    "pk": 110,
+    "fields": {
+        "slug": "boshqa-xizmatlar",
+        "image": "",
+        "name": "Boshqa xizmatlar",
+        "parent": 13,
+        "attribute": null,
+        "count_products": 0,
+        "lft": 8,
+        "rght": 9,
+        "tree_id": 13,
+        "level": 1
+    }
+},
+{
+    "model": "apps.category",
+    "pk": 111,
+    "fields": {
+        "slug": "maishiy-xizmatlar",
+        "image": "",
+        "name": "Maishiy xizmatlar",
+        "parent": 13,
+        "attribute": null,
+        "count_products": 0,
+        "lft": 20,
+        "rght": 21,
+        "tree_id": 13,
+        "level": 1
+    }
+},
+{
+    "model": "apps.category",
+    "pk": 112,
+    "fields": {
+        "slug": "xomashyo-materiallar",
+        "image": "",
+        "name": "Xomashyo / materiallar",
+        "parent": 13,
+        "attribute": null,
+        "count_products": 0,
+        "lft": 44,
+        "rght": 45,
+        "tree_id": 13,
+        "level": 1
+    }
+},
+{
+    "model": "apps.category",
+    "pk": 113,
+    "fields": {
+        "slug": "qurilish-tamirlash-usta",
+        "image": "",
+        "name": "Qurilish / ta'mirlash / usta",
+        "parent": 13,
+        "attribute": null,
+        "count_products": 0,
+        "lft": 22,
+        "rght": 23,
+        "tree_id": 13,
+        "level": 1
+    }
+},
+{
+    "model": "apps.category",
+    "pk": 114,
+    "fields": {
+        "slug": "hayvonlar-uchun-xizmatlar",
+        "image": "",
+        "name": "Hayvonlar uchun xizmatlar",
+        "parent": 13,
+        "attribute": null,
+        "count_products": 0,
+        "lft": 16,
+        "rght": 17,
+        "tree_id": 13,
+        "level": 1
+    }
+},
+{
+    "model": "apps.category",
+    "pk": 115,
+    "fields": {
+        "slug": "yuridik-xizmatlar",
+        "image": "",
+        "name": "Yuridik xizmatlar",
+        "parent": 13,
+        "attribute": null,
+        "count_products": 0,
+        "lft": 46,
+        "rght": 47,
+        "tree_id": 13,
+        "level": 1
+    }
+},
+{
+    "model": "apps.category",
+    "pk": 116,
+    "fields": {
+        "slug": "kiyim-kechak",
+        "image": "",
+        "name": "Kiyim-kechak",
+        "parent": 14,
+        "attribute": null,
+        "count_products": 0,
+        "lft": 6,
+        "rght": 7,
+        "tree_id": 7,
+        "level": 1
+    }
+},
+{
+    "model": "apps.category",
+    "pk": 117,
+    "fields": {
+        "slug": "aksessuarlar",
+        "image": "",
+        "name": "Aksessuarlar",
+        "parent": 14,
+        "attribute": null,
+        "count_products": 0,
+        "lft": 2,
+        "rght": 3,
+        "tree_id": 7,
+        "level": 1
+    }
+},
+{
+    "model": "apps.category",
+    "pk": 118,
+    "fields": {
+        "slug": "toy-uchun",
+        "image": "",
+        "name": "To'y uchun",
+        "parent": 14,
+        "attribute": null,
+        "count_products": 0,
+        "lft": 12,
+        "rght": 13,
+        "tree_id": 7,
+        "level": 1
+    }
+},
+{
+    "model": "apps.category",
+    "pk": 119,
+    "fields": {
+        "slug": "sovgalar",
+        "image": "",
+        "name": "Sovg'alar",
+        "parent": 14,
+        "attribute": null,
+        "count_products": 0,
+        "lft": 10,
+        "rght": 11,
+        "tree_id": 7,
+        "level": 1
+    }
+},
+{
+    "model": "apps.category",
+    "pk": 120,
+    "fields": {
+        "slug": "moda-turli-tumanliklar",
+        "image": "",
+        "name": "Moda, turli-tumanliklar",
+        "parent": 14,
+        "attribute": null,
+        "count_products": 0,
+        "lft": 8,
+        "rght": 9,
+        "tree_id": 7,
+        "level": 1
+    }
+},
+{
+    "model": "apps.category",
+    "pk": 122,
+    "fields": {
+        "slug": "antikvar-kolleksiyalar",
+        "image": "",
+        "name": "Antikvar kolleksiyalar",
+        "parent": 15,
+        "attribute": null,
+        "count_products": 0,
+        "lft": 2,
+        "rght": 3,
+        "tree_id": 14,
+        "level": 1
+    }
+},
+{
+    "model": "apps.category",
+    "pk": 123,
+    "fields": {
+        "slug": "cd-dvd-plastinkalar-kassetalar",
+        "image": "",
+        "name": "Cd-dvd-plastinkalar, kassetalar",
+        "parent": 15,
+        "attribute": null,
+        "count_products": 0,
+        "lft": 6,
+        "rght": 7,
+        "tree_id": 14,
+        "level": 1
+    }
+},
+{
+    "model": "apps.category",
+    "pk": 124,
+    "fields": {
+        "slug": "musiqa-anjomlari",
+        "image": "",
+        "name": "Musiqa anjomlari",
+        "parent": 15,
+        "attribute": null,
+        "count_products": 0,
+        "lft": 12,
+        "rght": 13,
+        "tree_id": 14,
+        "level": 1
+    }
+},
+{
+    "model": "apps.category",
+    "pk": 125,
+    "fields": {
+        "slug": "chiptalar",
+        "image": "",
+        "name": "Chiptalar",
+        "parent": 15,
+        "attribute": null,
+        "count_products": 0,
+        "lft": 8,
+        "rght": 9,
+        "tree_id": 14,
+        "level": 1
+    }
+},
+{
+    "model": "apps.category",
+    "pk": 126,
+    "fields": {
+        "slug": "sport-dam-olish",
+        "image": "",
+        "name": "Sport-dam olish",
+        "parent": 15,
+        "attribute": null,
+        "count_products": 0,
+        "lft": 14,
+        "rght": 15,
+        "tree_id": 14,
+        "level": 1
+    }
+},
+{
+    "model": "apps.category",
+    "pk": 127,
+    "fields": {
+        "slug": "boshqalar",
+        "image": "",
+        "name": "Boshqalar",
+        "parent": 15,
+        "attribute": null,
+        "count_products": 0,
+        "lft": 4,
+        "rght": 5,
+        "tree_id": 14,
+        "level": 1
+    }
+},
+{
+    "model": "apps.category",
+    "pk": 128,
+    "fields": {
+        "slug": "kitoblar-jurnallar",
+        "image": "",
+        "name": "Kitoblar-jurnallar",
+        "parent": 15,
+        "attribute": null,
+        "count_products": 0,
+        "lft": 10,
+        "rght": 11,
+        "tree_id": 14,
+        "level": 1
+    }
+}
+]

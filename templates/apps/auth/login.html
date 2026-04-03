@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Вход — OLX.ua</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f2f4f5;
+        }
+
+        .olx-btn-social {
+            transition: all 0.2s;
+            border: 2px solid #002f34;
+        }
+
+        .olx-btn-social:hover {
+            background-color: #f2f4f5;
+        }
+
+        .olx-input {
+            background-color: #f2f4f5;
+            border: 2px solid transparent;
+        }
+
+        .olx-input:focus {
+            border-color: #002f34;
+            background-color: #fff;
+            outline: none;
+        }
+
+        .olx-primary-btn {
+            background-color: #002f34;
+            color: #fff;
+            transition: background-color 0.2s;
+        }
+
+        .olx-primary-btn:hover {
+            background-color: #003d44;
+        }
+
+        /* Pure CSS Tab Toggle (Checkbox Hack) */
+        #tab-register:checked ~ .form-container .login-form {
+            display: none;
+        }
+
+        #tab-register:checked ~ .form-container .register-form {
+            display: block;
+        }
+
+        #tab-login:checked ~ .form-container .login-form {
+            display: block;
+        }
+
+        #tab-login:checked ~ .form-container .register-form {
+            display: none;
+        }
+
+        .tab-label {
+            cursor: pointer;
+            padding-bottom: 12px;
+            color: #406367;
+            font-weight: 500;
+            text-align: center;
+            flex: 1;
+            border-bottom: 2px solid #d8dfe0;
+        }
+
+        input[type="radio"]:checked + .tab-label {
+            color: #002f34;
+            border-bottom: 4px solid #002f34;
+        }
+    </style>
+    <script type="importmap">
+        {
+          "imports": {
+            "react": "https://esm.sh/react@^19.2.4",
+            "react/": "https://esm.sh/react@^19.2.4/",
+            "@google/genai": "https://esm.sh/@google/genai@^1.41.0"
+          }
+        }
+    </script>
+</head>
+<body class="flex items-center justify-center min-h-screen p-4">
+<div class="bg-white w-full max-w-[450px] p-8 rounded-sm shadow-sm border border-gray-100">
+
+    <!-- Social Logins -->
+    <div class="space-y-4 mb-6">
+        <button class="olx-btn-social w-full flex items-center justify-center gap-3 py-3 rounded-md font-bold text-[#002f34]">
+            <i class="fab fa-facebook text-[#1877f2] text-xl"></i>
+            <span>Продолжить через Facebook</span>
+        </button>
+
+        <button class="olx-btn-social w-full flex items-center justify-center gap-3 py-3 rounded-md font-bold text-[#002f34]">
+            <i class="fab fa-apple text-black text-xl"></i>
+            <span>Продолжить через Apple</span>
+        </button>
+
+        <a href="{% url 'google_login_page' %}"
+           class="w-full flex items-center justify-center gap-3 py-3 px-4 mb-3 border-2 border-[#002f34] rounded-md font-bold text-[#002f34] hover:bg-gray-50 transition-colors duration-200">
+            <img src="https://www.gstatic.com/images/branding/product/1x/gsa_512dp.png"
+                 class="w-5 h-5 object-contain"
+                 alt="Google">
+            <span>Продолжить через Google</span>
+        </a>
+    </div>
+
+    <!-- OR Separator -->
+    <div class="relative flex py-5 items-center">
+        <div class="flex-grow border-t border-gray-300"></div>
+        <span class="flex-shrink mx-4 text-gray-500 font-medium">или</span>
+        <div class="flex-grow border-t border-gray-300"></div>
+    </div>
+
+    <!-- Tabs -->
+    <div class="flex mb-8">
+        <input type="radio" name="tabs" id="tab-login" class="hidden" checked>
+        <label for="tab-login" class="tab-label">Войти</label>
+
+        <input type="radio" name="tabs" id="tab-register" class="hidden">
+        <a for="tab-register" class="tab-label" href="{% url "register_page" %}">Зарегистрироваться</a>
+    </div>
+
+    <!-- Form Container -->
+    <div class="form-container">
+        <!-- Login Form -->
+        <form class="login-form space-y-6" action="{% url 'login_page' %}" method="POST">
+            {% csrf_token %}
+            <div>
+                <label class="block text-[#002f34] text-sm font-medium mb-2">Электронная почта или телефон</label>
+                <input type="email" name="username" class="olx-input w-full p-4 rounded-md" placeholder="">
+            </div>
+
+
+            <div class="relative">
+                <label class="block text-[#002f34] text-sm font-medium mb-2">Пароль</label>
+
+                <input
+                        id="passwordInput"
+                        type="password"
+                        name="password"
+                        class="olx-input w-full p-4 rounded-md pr-12"
+                >
+
+                <button
+                        id="togglePassword"
+                        type="button"
+                        class="absolute right-4 top-[42px] text-gray-400 hover:text-[#002f34]"
+                >
+                    <i id="eyeIcon" class="far fa-eye text-lg"></i>
+                </button>
+            </div>
+
+
+            <div>
+                <a href="#" class="inline-block text-[#002f34] font-bold text-sm hover:underline">
+                    Забыли пароль?
+                </a>
+            </div>
+
+            <button type="submit" class="olx-primary-btn w-full py-4 rounded-md font-bold text-lg">
+                Войти
+            </button>
+        </form>
+    </div>
+    {% if form.non_field_errors %}
+        <div class="alert alert-danger">
+            {% for error in form.non_field_errors %}
+                <p>{{ error }}</p>
+            {% endfor %}
+        </div>
+    {% endif %}
+</div>
+<script>
+    const passwordInput = document.getElementById("passwordInput");
+    const togglePassword = document.getElementById("togglePassword");
+    const eyeIcon = document.getElementById("eyeIcon");
+
+    togglePassword.addEventListener("click", function () {
+        if (passwordInput.type === "password") {
+            passwordInput.type = "text";
+            eyeIcon.classList.remove("fa-eye");
+            eyeIcon.classList.add("fa-eye-slash");
+        } else {
+            passwordInput.type = "password";
+            eyeIcon.classList.remove("fa-eye-slash");
+            eyeIcon.classList.add("fa-eye");
+        }
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,839 @@
+{% extends "apps/base.html" %}
+
+{% load form_extras %}
+
+{% block cod_css %}
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+
+    .top-search-input::placeholder {
+        color: #406367;
+    }
+
+    .filter-wrapper {
+        position: relative;
+        width: 100%;
+        max-width: 250px;
+    }
+
+    .filter-select-imitation {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 12px;
+        background: white;
+        border-radius: 0;
+        cursor: pointer;
+        border-bottom: 2px solid #ced4da;
+        transition: border-color 0.3s;
+    }
+
+    .filter-select-imitation:hover {
+        border-bottom-color: #002f34;
+    }
+
+    .main-categories {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 280px;
+        background: white;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        z-index: 50;
+    }
+
+    .category-item {
+        position: relative;
+        padding: 10px 15px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: #002f34;
+        border-bottom: 1px solid #f2f4f5;
+    }
+
+    .sub-categories {
+        display: none;
+        position: absolute;
+        top: 0;
+        left: 100%;
+        width: 280px;
+        background: white;
+        border-left: 1px solid #f2f4f5;
+        box-shadow: 10px 4px 12px rgba(0, 0, 0, 0.1);
+        list-style: none;
+        padding: 0;
+        z-index: 60;
+    }
+
+    .count-badge {
+        background: #f2f4f5;
+        color: #002f34;
+        font-size: 10px;
+        padding: 2px 8px;
+        border-radius: 12px;
+        margin-right: 8px;
+    }
+
+    .category-item:hover {
+        background-color: #002f34;
+        color: white;
+    }
+
+    .category-item:hover .count-badge {
+        background: rgba(255, 255, 255, 0.2);
+        color: white;
+    }
+
+    .hidden-check:checked ~ .main-categories {
+        display: block;
+    }
+
+    .category-item:hover > .sub-categories {
+        display: block;
+    }
+
+    .sub-categories::before {
+        content: "";
+        position: absolute;
+        left: -10px;
+        top: 0;
+        width: 10px;
+        height: 100%;
+    }
+
+    /* LOCATION DROPDOWN */
+    .location-dropdown {
+        position: relative;
+        overflow: visible;
+    }
+
+    .location-toggle {
+        width: 100%;
+        height: 100%;
+        background: white;
+        border: none;
+        padding: 0 16px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        cursor: pointer;
+        text-align: left;
+    }
+
+    .location-toggle.open {
+        box-shadow: inset 0 0 0 2px #00a49f;
+    }
+
+    .location-toggle-left {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        min-width: 0;
+    }
+
+    .location-label {
+        font-size: 17px;
+        color: #002f34;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .location-arrow {
+        font-size: 12px;
+        color: #5f6f73;
+        transition: transform .2s;
+        flex-shrink: 0;
+    }
+
+    .location-arrow.rotate {
+        transform: rotate(180deg);
+    }
+
+    .location-menu {
+        position: absolute;
+        top: calc(100% + 2px);
+        left: 0;
+        width: 100%;
+        min-width: 320px;
+        background: #fff;
+        border: 1px solid #d8dfe0;
+        box-shadow: 0 8px 24px rgba(0,0,0,.12);
+        z-index: 1000;
+    }
+
+    .location-menu.hidden {
+        display: none;
+    }
+
+    .location-menu-header {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 12px 16px 8px;
+        border-bottom: 1px solid #eef1f2;
+    }
+
+    .location-menu-title {
+        font-size: 14px;
+        font-weight: 700;
+        color: #002f34;
+    }
+
+    .back-btn {
+        width: 28px;
+        height: 28px;
+        border: none;
+        background: transparent;
+        cursor: pointer;
+        color: #002f34;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .back-btn.hidden {
+        display: none;
+    }
+
+    .location-menu-list {
+        max-height: 360px;
+        overflow-y: auto;
+    }
+
+    .location-item {
+        width: 100%;
+        border: none;
+        border-bottom: 1px solid #e9eeef;
+        background: #fff;
+        padding: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        text-align: left;
+        cursor: pointer;
+        color: #002f34;
+        font-size: 14px;
+    }
+
+    .location-item:hover {
+        background: #f2f4f5;
+    }
+
+    .location-item i {
+        font-size: 14px;
+        color: #002f34;
+    }
+
+    .top-search-input::placeholder {
+        color: #406367;
+    }
+    /* Улучшенная обертка */
+        .filter-wrapper {
+            position: relative;
+            width: 100%; /* Пусть занимает всю ширину колонки сетки */
+            max-width: 250px;
+        }
+
+        /* Имитация select */
+        .filter-select-imitation {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px;
+            background: white; /* Белый фон лучше смотрится в сетке */
+            border-radius: 0;
+            cursor: pointer;
+            border-bottom: 2px solid #ced4da; /* Стиль OLX */
+            transition: border-color 0.3s;
+        }
+
+        .filter-select-imitation:hover {
+            border-bottom-color: #002f34;
+        }
+
+        /* Список категорий */
+        .main-categories {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 280px; /* Фиксированная ширина для удобства */
+            background: white;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            z-index: 50;
+        }
+
+        .category-item {
+            position: relative;
+            padding: 10px 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #002f34;
+            border-bottom: 1px solid #f2f4f5;
+        }
+
+        /* Подкатегории */
+        .sub-categories {
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 100%; /* Вылет вправо */
+            width: 280px;
+            background: white;
+            border-left: 1px solid #f2f4f5;
+            box-shadow: 10px 4px 12px rgba(0, 0, 0, 0.1);
+            list-style: none;
+            padding: 0;
+            z-index: 60;
+        }
+
+        /* Оформление счетчика (числа) */
+        .count-badge {
+            background: #f2f4f5;
+            color: #002f34;
+            font-size: 10px;
+            padding: 2px 8px;
+            border-radius: 12px;
+            margin-right: 8px;
+        }
+
+        .category-item:hover {
+            background-color: #002f34;
+            color: white;
+        }
+
+        .category-item:hover .count-badge {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+        }
+
+        /* Показываем */
+        .hidden-check:checked ~ .main-categories {
+            display: block;
+        }
+
+        .category-item:hover > .sub-categories {
+            display: block;
+        }
+
+        /* Чтобы меню не закрывалось, когда мы ведем мышку к подкатегории */
+        .sub-categories::before {
+            content: "";
+            position: absolute;
+            left: -10px;
+            top: 0;
+            width: 10px;
+            height: 100%;
+        }
+    </style>
+{% endblock %}
+
+{% block cod_html %}
+<main class="max-w-6xl mx-auto px-4 py-6">
+
+    <section class="bg-white p-6 rounded shadow-sm mb-6">
+        <div class="flex justify-between items-center mb-6">
+            <h2 class="text-2xl font-bold text-[#002f34]">Фильтры</h2>
+            <button class="border-2 border-[#002f34] px-4 py-1 rounded font-bold text-sm hover:bg-gray-50">
+                <i class="fa-regular fa-heart mr-2"></i> Добавить в избранное
+            </button>
+        </div>
+    <form method="get" class="mb-6">
+  <div class="mb-5 overflow-visible rounded-md border border-[#d8dfe0] bg-white relative">
+    <div class="flex flex-col lg:flex-row">
+
+        <!-- Поиск -->
+        <div class="flex items-center flex-1 px-4 h-[60px] border-b lg:border-b-0 lg:border-r border-[#e5e7eb]">
+            <i class="fa-solid fa-magnifying-glass text-[#002f34] text-[18px] mr-3"></i>
+            <input
+                type="text"
+                name="q"
+                value="{{ request.GET.q }}"
+                placeholder="Nimani qidiryapsiz?"
+                class="w-full bg-transparent outline-none text-[18px] text-[#002f34] placeholder:text-[#406367]"
+            >
+        </div>
+
+        <!-- Локация -->
+        <div class="location-dropdown flex items-center lg:w-[280px] h-[60px] border-b lg:border-b-0 lg:border-r border-[#e5e7eb] relative">
+    <input type="hidden" name="region" id="regionInput" value="{{ request.GET.region|default:'' }}">
+    <input type="hidden" name="city" id="cityInput" value="{{ request.GET.city|default:'' }}">
+
+    <button type="button" id="locationToggle" class="location-toggle">
+        <div class="location-toggle-left">
+            <i class="fa-solid fa-location-dot text-[#002f34] text-[18px]"></i>
+            <span id="locationLabel" class="location-label">
+                {% if request.GET.region and request.GET.city %}
+                    {{ request.GET.region }}, {{ request.GET.city }}
+                {% elif request.GET.region %}
+                    {{ request.GET.region }}
+                {% else %}
+                    Вся страна
+                {% endif %}
+            </span>
+        </div>
+        <i id="locationArrow" class="fa-solid fa-chevron-down location-arrow"></i>
+    </button>
+
+    <div id="locationMenu" class="location-menu hidden">
+        <div class="location-menu-header">
+            <button type="button" id="backToRegions" class="back-btn hidden">
+                <i class="fa-solid fa-chevron-left"></i>
+            </button>
+            <div id="locationMenuTitle" class="location-menu-title">Выберите область</div>
+        </div>
+        <div id="locationMenuList" class="location-menu-list"></div>
+    </div>
+</div>
+
+        <!-- Кнопка -->
+        <button
+            type="submit"
+            class="h-[60px] lg:w-[145px] bg-[#002f34] text-white font-bold text-[18px] flex items-center justify-center gap-2 hover:bg-[#004f56] transition"
+        >
+            Qidiruv
+            <i class="fa-solid fa-magnifying-glass text-[16px]"></i>
+        </button>
+    </div>
+</div>
+
+
+
+        <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4">
+
+
+            <div class="filter-wrapper">
+        <label class="text-xs text-gray-500 uppercase font-bold">Категория</label>
+        <input type="checkbox" id="menu-toggle" class="hidden-check">
+
+        <label for="menu-toggle" class="filter-select-imitation">
+            <span class="text-sm">Выберите категорию</span>
+            <span class="text-[10px] text-gray-400">▼</span>
+        </label>
+
+
+                <ul class="main-categories">
+                    {% for category in top_categories %}
+                        <li class="category-item">
+                            <span class="text-sm font-medium">{{ category.name }}</span>
+                            <div class="flex items-center">
+                                <span class="count-badge">{{ category.count_products }}</span> <span class="text-gray-400">›</span>
+                            </div>
+
+                            <ul class="sub-categories">
+                                <li class="p-4 font-bold text-[#002f34] border-b">Все в {{ category.name }}</li>
+                                {% for sub in category.children.all %}
+                                    <li class="hover:bg-gray-100 flex justify-between items-center p-3">
+                                        <a href="{% url 'announcement_list_page' sub.slug %}"
+                                           class="text-sm text-[#002f34] w-full">
+                                            {{ sub.name }}
+                                        </a>
+                                        <span class="count-badge">45</span>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+
+        {% if 'ichki_toifa' in filter.form.fields %}
+    <div>
+        <label class="text-xs text-gray-500 uppercase font-bold">Ichki toifa</label>
+        {{ filter.form.ichki_toifa }}
+    </div>
+    {% endif %}
+
+
+    {% for item in dynamic_fields %}
+        {% endfor %}
+
+
+
+           <div>
+                <label class="text-xs text-gray-500 uppercase font-bold">Цена</label>
+                <div class="flex gap-2">
+                    {{ filter.form.min_price }}
+                    {{ filter.form.max_price }}
+                </div>
+            </div>
+
+
+
+            {% for item in dynamic_fields %}
+                {% if item.type == "range" %}
+                    <div>
+                        <label class="text-xs text-gray-500 uppercase font-bold">{{ item.label }}</label>
+                        <div class="flex gap-2">
+                            {{ filter.form|get_field:item.min_name }}
+                            {{ filter.form|get_field:item.max_name }}
+                        </div>
+                    </div>
+                {% else %}
+                    <div>
+                        <label class="text-xs text-gray-500 uppercase font-bold">{{ item.label }}</label>
+                        {{ filter.form|get_field:item.name }}
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+        <div class="flex items-end">
+            <button type="submit"
+                    class="bg-[#002f34] text-white px-6 py-3 rounded font-bold hover:bg-[#004f56] transition">
+                Применить
+            </button>
+        </div>
+            </form>
+
+
+            <br>
+            <div>
+                <label class="text-xs text-gray-500 uppercase font-bold">Состояние</label>
+                <select class="filter-select">
+                    <option>Все объявления</option>
+                </select>
+            </div>
+            <div>
+                <label class="text-xs text-gray-500 uppercase font-bold">Год выпуска</label>
+                <div class="flex gap-1">
+                    <select class="filter-select">
+                        <option>От:</option>
+                    </select>
+                    <select class="filter-select">
+                        <option>До:</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-8 flex justify-between border-b">
+            <div class="flex gap-8">
+                <button class="pb-3 border-b-4 border-[#002f34] font-bold text-sm">Все объявления</button>
+                <button class="pb-3 text-gray-500 text-sm hover:text-black">Бизнес</button>
+                <button class="pb-3 text-gray-500 text-sm hover:text-black">Частное</button>
+            </div>
+            <button class="text-sm text-gray-500 underline mb-2">Сбросить фильтры</button>
+        </div>
+    </section>
+
+
+
+
+
+
+
+    <div class="flex flex-wrap gap-4 mb-8 text-sm text-[#002f34]">
+        {% for brand in manufacturers %}
+            <a href="#" class="font-semibold hover:underline">{{ brand.name }} <span class="text-gray-400 font-normal">1 234</span></a>
+        {% endfor %}
+        <button class="font-bold border-b border-dotted border-black">Показать все <i
+                class="fa-solid fa-chevron-down text-[10px]"></i></button>
+    </div>
+
+    <h3 class="text-xl font-bold text-[#002f34] mb-4">Мы нашли более 1 000 объявлений</h3>
+
+    <div class="space-y-4">
+        {% for announcement in announcements %}
+            <div class="bg-white rounded overflow-hidden shadow-sm flex flex-col md:flex-row relative group hover:shadow-md transition">
+                <div class="w-full md:w-72 h-48 relative flex-shrink-0">
+                    <img src="{{ announcement.images.first.image.url }}" class="w-full h-full object-cover" alt="" >
+                    <span class="absolute bottom-2 left-2 bg-[#23e5db] text-[#002f34] text-[10px] font-bold px-1 uppercase">ТОП</span>
+                </div>
+
+                <div class="p-4 flex flex-col justify-between flex-grow">
+                    <div>
+                        <div class="flex justify-between items-start">
+                            <h4 class="text-lg text-[#002f34] leading-tight group-hover:text-cyan-600 cursor-pointer">
+                                {{ announcement.name }}
+                            </h4>
+                            {% if request.user.is_authenticated %}
+    <button
+    type="button"
+    class="favorite-btn text-xl cursor-pointer transition"
+    data-id="{{ announcement.pk }}"
+    data-url="{% url 'toggle_favorite' announcement.pk %}"
+>
+    {% if announcement.id in favorite_ids %}
+        <i class="fa-solid fa-heart text-red-500"></i>
+    {% else %}
+        <i class="fa-regular fa-heart text-[#002f34] hover:text-red-500"></i>
+    {% endif %}
+</button>
+{% else %}
+    <a href="{% url 'login_page' %}?next={{ request.path }}" class="text-xl cursor-pointer transition">
+        <i class="fa-regular fa-heart text-[#002f34] hover:text-red-500"></i>
+    </a>
+{% endif %}
+                        </div>
+                        <p class="text-xs text-gray-500 mt-2">Ташкент, Юнусабадский район - Сегодня в 12:45</p>
+                    </div>
+
+                    <div class="flex justify-between items-end mt-4">
+                        <div class="text-xs text-gray-500">
+                            <i class="fa-regular fa-calendar mr-1"></i> 2025 - 0 км
+                        </div>
+                        <div class="text-right">
+                            <p class="text-xl font-bold text-[#002f34]">{{ announcement.price }} сум</p>
+                            <p class="text-xs text-gray-400">Договорная</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+</main>
+
+<footer class="bg-white mt-12 py-12 border-t text-center text-xs text-gray-400">
+    <p>© 2026 OLX Clone Performance</p>
+</footer>
+{% endblock %}
+
+{% block cod_js %}
+    <script>
+function getCookie(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== "") {
+        const cookies = document.cookie.split(";");
+        for (let i = 0; i < cookies.length; i++) {
+            const cookie = cookies[i].trim();
+            if (cookie.substring(0, name.length + 1) === (name + "=")) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+    const buttons = document.querySelectorAll(".favorite-btn");
+    const csrfToken = getCookie("csrftoken");
+
+    buttons.forEach(button => {
+        button.addEventListener("click", async function () {
+            const url = this.dataset.url;
+            const icon = this.querySelector("i");
+
+            try {
+                const response = await fetch(url, {
+                    method: "POST",
+                    credentials: "same-origin",
+                    headers: {
+                        "X-CSRFToken": csrfToken,
+                        "X-Requested-With": "XMLHttpRequest",
+                        "Accept": "application/json"
+                    }
+                });
+
+                if (!response.ok) {
+                    const text = await response.text();
+                    console.error("Server response:", response.status, text);
+                    throw new Error("Ошибка запроса");
+                }
+
+                const data = await response.json();
+
+                if (data.is_favorite) {
+                    icon.className = "fa-solid fa-heart text-red-500";
+                } else {
+                    icon.className = "fa-regular fa-heart text-[#002f34] hover:text-red-500";
+                }
+
+            } catch (error) {
+                console.error("Favorite error:", error);
+            }
+        });
+    });
+});
+document.addEventListener("DOMContentLoaded", function () {
+    // ... ваш существующий код для кнопок избранного ...
+
+    // --- ЛОГИКА РЕДИРЕКТА ДЛЯ ICHKI TOIFA ---
+    const ichkiToifaSelect = document.getElementById("ichki-toifa-select");
+
+    if (ichkiToifaSelect) {
+        ichkiToifaSelect.addEventListener("change", function() {
+            const selectedSlug = this.value;
+            let newPath = "";
+
+            if (selectedSlug) {
+                // Если выбрали другую марку (например, BWD) - идем в нее
+                let urlTemplate = "{% url 'announcement_list_page' 'DUMMY_SLUG' %}";
+                newPath = urlTemplate.replace('DUMMY_SLUG', selectedSlug);
+            } else {
+                // Если выбрали "Hamma e'lonlar", возвращаемся к родительской категории
+                // Если у текущей категории есть родитель, берем его slug, иначе оставляем текущий
+                let parentSlug = "{% if current_category %}{{ current_category.parent.slug|default:current_category.slug }}{% else %}{% endif %}";
+                let urlTemplate = "{% url 'announcement_list_page' 'DUMMY_SLUG' %}";
+                newPath = urlTemplate.replace('DUMMY_SLUG', parentSlug);
+            }
+
+            // Очищаем параметр из GET-запроса, чтобы он не дублировался в ссылке
+            let params = new URLSearchParams(window.location.search);
+            params.delete('ichki_toifa');
+
+            let queryString = params.toString();
+            if (queryString) {
+                window.location.href = newPath + "?" + queryString;
+            } else {
+                window.location.href = newPath;
+            }
+        });
+    }
+});
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    const REGION_CITIES = {
+        {% for region in regions %}
+            "{{ region.name|escapejs }}": [
+                {% for city in region.cities.all %}
+                    "{{ city.name|escapejs }}",
+                {% endfor %}
+            ],
+        {% endfor %}
+    };
+
+    const locationToggle = document.getElementById("locationToggle");
+    const locationMenu = document.getElementById("locationMenu");
+    const locationMenuList = document.getElementById("locationMenuList");
+    const locationLabel = document.getElementById("locationLabel");
+    const locationArrow = document.getElementById("locationArrow");
+    const locationMenuTitle = document.getElementById("locationMenuTitle");
+    const backToRegions = document.getElementById("backToRegions");
+    const regionInput = document.getElementById("regionInput");
+    const cityInput = document.getElementById("cityInput");
+    const locationDropdown = document.querySelector(".location-dropdown");
+
+    if (!locationToggle || !locationMenu) return;
+
+    let selectedRegion = regionInput.value || "";
+    let selectedCity = cityInput.value || "";
+    let currentView = "regions";
+
+    function updateLabel() {
+        if (selectedRegion && selectedCity) {
+            locationLabel.textContent = `${selectedRegion}, ${selectedCity}`;
+        } else if (selectedRegion) {
+            locationLabel.textContent = selectedRegion;
+        } else {
+            locationLabel.textContent = "Вся страна";
+        }
+    }
+
+    function openMenu() {
+        locationMenu.classList.remove("hidden");
+        locationToggle.classList.add("open");
+        locationArrow.classList.add("rotate");
+    }
+
+    function closeMenu() {
+        locationMenu.classList.add("hidden");
+        locationToggle.classList.remove("open");
+        locationArrow.classList.remove("rotate");
+    }
+
+    function renderRegions() {
+        currentView = "regions";
+        locationMenuTitle.textContent = "Выберите область";
+        backToRegions.classList.add("hidden");
+
+        locationMenuList.innerHTML = Object.keys(REGION_CITIES).map(region => `
+            <button type="button" class="location-item" data-region="${region}">
+                <span>${region}</span>
+                <i class="fa-solid fa-chevron-right"></i>
+            </button>
+        `).join("");
+
+        locationMenuList.querySelectorAll("[data-region]").forEach(btn => {
+            btn.addEventListener("click", function () {
+                selectedRegion = this.dataset.region;
+                selectedCity = "";
+                regionInput.value = selectedRegion;
+                cityInput.value = "";
+                renderCities(selectedRegion);
+            });
+        });
+    }
+
+    function renderCities(region) {
+        currentView = "cities";
+        locationMenuTitle.textContent = "Выберите город";
+        backToRegions.classList.remove("hidden");
+
+        const cities = REGION_CITIES[region] || [];
+
+        locationMenuList.innerHTML = cities.map(city => `
+            <button type="button" class="location-item" data-city="${city}">
+                <span>${city}</span>
+            </button>
+        `).join("");
+
+        locationMenuList.querySelectorAll("[data-city]").forEach(btn => {
+            btn.addEventListener("click", function () {
+                selectedCity = this.dataset.city;
+                cityInput.value = selectedCity;
+                updateLabel();
+                closeMenu();
+            });
+        });
+    }
+
+    locationToggle.addEventListener("click", function (e) {
+        e.preventDefault();
+
+        if (locationMenu.classList.contains("hidden")) {
+            if (selectedRegion && currentView === "cities") {
+                renderCities(selectedRegion);
+            } else {
+                renderRegions();
+            }
+            openMenu();
+        } else {
+            closeMenu();
+        }
+    });
+
+    backToRegions.addEventListener("click", function () {
+        renderRegions();
+    });
+
+    document.addEventListener("click", function (e) {
+        if (locationDropdown && !locationDropdown.contains(e.target)) {
+            closeMenu();
+        }
+    });
+
+    document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape") {
+            closeMenu();
+        }
+    });
+
+    updateLabel();
+
+    if (selectedRegion && !selectedCity) {
+        currentView = "regions";
+    } else if (selectedRegion && selectedCity) {
+        currentView = "cities";
+    }
+
+    renderRegions();
+});
+
+
+
+</script>
+{% endblock %}
