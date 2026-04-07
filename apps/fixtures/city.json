@@ -1,0 +1,1073 @@
+[
+{
+    "model": "apps.city",
+    "pk": 1,
+    "fields": {
+        "slug": "angren",
+        "region": 2,
+        "name": "Angren"
+    }
+},
+{
+    "model": "apps.city",
+    "pk": 121,
+    "fields": {
+        "slug": "nukus",
+        "region": 1,
+        "name": "Nukus"
+    }
+},
+{
+    "model": "apps.city",
+    "pk": 122,
+    "fields": {
+        "slug": "beruniy",
+        "region": 1,
+        "name": "Beruniy"
+    }
+},
+{
+    "model": "apps.city",
+    "pk": 123,
+    "fields": {
+        "slug": "boston",
+        "region": 1,
+        "name": "Boston"
+    }
+},
+{
+    "model": "apps.city",
+    "pk": 124,
+    "fields": {
+        "slug": "mangit",
+        "region": 1,
+        "name": "Mangit"
+    }
+},
+{
+    "model": "apps.city",
+    "pk": 125,
+    "fields": {
+        "slug": "moynaq",
+        "region": 1,
+        "name": "Moynaq"
+    }
+},
+{
+    "model": "apps.city",
+    "pk": 126,
+    "fields": {
+        "slug": "qongirot",
+        "region": 1,
+        "name": "Qongirot"
+    }
+},
+{
+    "model": "apps.city",
+    "pk": 127,
+    "fields": {
+        "slug": "chimboy",
+        "region": 1,
+        "name": "Chimboy"
+    }
+},
+{
+    "model": "apps.city",
+    "pk": 128,
+    "fields": {
+        "slug": "shumanay",
+        "region": 1,
+        "name": "Shumanay"
+    }
+},
+{
+    "model": "apps.city",
+    "pk": 129,
+    "fields": {
+        "slug": "taxiatosh",
+        "region": 1,
+        "name": "Taxiatosh"
+    }
+},
+{
+    "model": "apps.city",
+    "pk": 130,
+    "fields": {
+        "slug": "tortkol",
+        "region": 1,
+        "name": "Tortkol"
+    }
+},
+{
+    "model": "apps.city",
+    "pk": 131,
+    "fields": {
+        "slug": "xalqobod",
+        "region": 1,
+        "name": "Xalqobod"
+    }
+},
+{
+    "model": "apps.city",
+    "pk": 132,
+    "fields": {
+        "slug": "xojeli",
+        "region": 1,
+        "name": "Xojeli"
+    }
+},
+{
+    "model": "apps.city",
+    "pk": 133,
+    "fields": {
+        "slug": "andijon-city",
+        "region": 15,
+        "name": "Andijon"
+    }
+},
+{
+    "model": "apps.city",
+    "pk": 134,
+    "fields": {
+        "slug": "asaka",
+        "region": 15,
+        "name": "Asaka"
+    }
+},
+{
+    "model": "apps.city",
+    "pk": 135,
+    "fields": {
+        "slug": "jalaquduq",
+        "region": 15,
+        "name": "Jalaquduq"
+    }
+},
+{
+    "model": "apps.city",
+    "pk": 136,
+    "fields": {
+        "slug": "marhamat",
+        "region": 15,
+        "name": "Marhamat"
+    }
+},
+{
+    "model": "apps.city",
+    "pk": 137,
+    "fields": {
+        "slug": "paxtaobod",
+        "region": 15,
+        "name": "Paxtaobod"
+    }
+},
+{
+    "model": "apps.city",
+    "pk": 138,
+    "fields": {
+        "slug": "poytug",
+        "region": 15,
+        "name": "Poytug"
+    }
+},
+{
+    "model": "apps.city",
+    "pk": 139,
+    "fields": {
+        "slug": "qorasuv",
+        "region": 15,
+        "name": "Qorasuv"
+    }
+},
+{
+    "model": "apps.city",
+    "pk": 140,
+    "fields": {
+        "slug": "qorgontepa",
+        "region": 15,
+        "name": "Qorgontepa"
+    }
+},
+{
+    "model": "apps.city",
+    "pk": 141,
+    "fields": {
+        "slug": "shahrixon",
+        "region": 15,
+        "name": "Shahrixon"
+    }
+},
+{
+    "model": "apps.city",
+    "pk": 142,
+    "fields": {
+        "slug": "xojaobod",
+        "region": 15,
+        "name": "Xojaobod"
+    }
+},
+{
+    "model": "apps.city",
+    "pk": 143,
+    "fields": {
+        "slug": "xonobod",
+        "region": 15,
+        "name": "Xonobod"
+    }
+},
+{
+    "model": "apps.city",
+    "pk": 144,
+    "fields": {
+        "slug": "buxoro-city",
+        "region": 3,
+        "name": "Buxoro"
+    }
+},
+{
+    "model": "apps.city",
+    "pk": 145,
+    "fields": {
+        "slug": "galaosiyo",
+        "region": 3,
+        "name": "Galaosiyo"
+    }
+},
+{
+    "model": "apps.city",
+    "pk": 146,
+    "fields": {
+        "slug": "gijduvon",
+        "region": 3,
+        "name": "Gijduvon"
+    }
+},
+{
+    "model": "apps.city",
+    "pk": 147,
+    "fields": {
+        "slug": "kogon",
+        "region": 3,
+        "name": "Kogon"
+    }
+},
+{
+    "model": "apps.city",
+    "pk": 148,
+    "fields": {
+        "slug": "olot",
+        "region": 3,
+        "name": "Olot"
+    }
+},
+{
+    "model": "apps.city",
+    "pk": 149,
+    "fields": {
+        "slug": "qorakol",
+        "region": 3,
+        "name": "Qorakol"
+    }
+},
+{
+    "model": "apps.city",
+    "pk": 150,
+    "fields": {
+        "slug": "qorovulbozor",
+        "region": 3,
+        "name": "Qorovulbozor"
+    }
+},
+{
+    "model": "apps.city",
+    "pk": 151,
+    "fields": {
+        "slug": "romitan",
+        "region": 3,
+        "name": "Romitan"
+    }
+},
+{
+    "model": "apps.city",
+    "pk": 152,
+    "fields": {
+        "slug": "shofirkon",
+        "region": 3,
+        "name": "Shofirkon"
+    }
+},
+{
+    "model": "apps.city",
+    "pk": 153,
+    "fields": {
+        "slug": "vobkent",
+        "region": 3,
+        "name": "Vobkent"
+    }
+},
+{
+    "model": "apps.city",
+    "pk": 154,
+    "fields": {
+        "slug": "fargona-city",
+        "region": 4,
+        "name": "Fargona"
+    }
+},
+{
+    "model": "apps.city",
+    "pk": 155,
+    "fields": {
+        "slug": "beshariq",
+        "region": 4,
+        "name": "Beshariq"
+    }
+},
+{
+    "model": "apps.city",
+    "pk": 156,
+    "fields": {
+        "slug": "kokand",
+        "region": 4,
+        "name": "Kokand"
+    }
+},
+{
+    "model": "apps.city",
+    "pk": 157,
+    "fields": {
+        "slug": "margilon",
+        "region": 4,
+        "name": "Margilon"
+    }
+},
+{
+    "model": "apps.city",
+    "pk": 158,
+    "fields": {
+        "slug": "quva",
+        "region": 4,
+        "name": "Quva"
+    }
+},
+{
+    "model": "apps.city",
+    "pk": 159,
+    "fields": {
+        "slug": "quvasoy",
+        "region": 4,
+        "name": "Quvasoy"
+    }
+},
+{
+    "model": "apps.city",
+    "pk": 160,
+    "fields": {
+        "slug": "rishton",
+        "region": 4,
+        "name": "Rishton"
+    }
+},
+{
+    "model": "apps.city",
+    "pk": 161,
+    "fields": {
+        "slug": "tinchlik",
+        "region": 4,
+        "name": "Tinchlik"
+    }
+},
+{
+    "model": "apps.city",
+    "pk": 162,
+    "fields": {
+        "slug": "yaypan",
+        "region": 4,
+        "name": "Yaypan"
+    }
+},
+{
+    "model": "apps.city",
+    "pk": 163,
+    "fields": {
+        "slug": "jizzax-city",
+        "region": 5,
+        "name": "Jizzax"
+    }
+},
+{
+    "model": "apps.city",
+    "pk": 164,
+    "fields": {
+        "slug": "dashtobod",
+        "region": 5,
+        "name": "Dashtobod"
+    }
+},
+{
+    "model": "apps.city",
+    "pk": 165,
+    "fields": {
+        "slug": "dostlik",
+        "region": 5,
+        "name": "Dostlik"
+    }
+},
+{
+    "model": "apps.city",
+    "pk": 166,
+    "fields": {
+        "slug": "gallaorol",
+        "region": 5,
+        "name": "Gallaorol"
+    }
+},
+{
+    "model": "apps.city",
+    "pk": 167,
+    "fields": {
+        "slug": "gagarin",
+        "region": 5,
+        "name": "Gagarin"
+    }
+},
+{
+    "model": "apps.city",
+    "pk": 168,
+    "fields": {
+        "slug": "paxtakor",
+        "region": 5,
+        "name": "Paxtakor"
+    }
+},
+{
+    "model": "apps.city",
+    "pk": 169,
+    "fields": {
+        "slug": "yangiobod",
+        "region": 5,
+        "name": "Yangiobod"
+    }
+},
+{
+    "model": "apps.city",
+    "pk": 170,
+    "fields": {
+        "slug": "namangan-city",
+        "region": 6,
+        "name": "Namangan"
+    }
+},
+{
+    "model": "apps.city",
+    "pk": 171,
+    "fields": {
+        "slug": "chortoq",
+        "region": 6,
+        "name": "Chortoq"
+    }
+},
+{
+    "model": "apps.city",
+    "pk": 172,
+    "fields": {
+        "slug": "chust",
+        "region": 6,
+        "name": "Chust"
+    }
+},
+{
+    "model": "apps.city",
+    "pk": 173,
+    "fields": {
+        "slug": "haqqulobod",
+        "region": 6,
+        "name": "Haqqulobod"
+    }
+},
+{
+    "model": "apps.city",
+    "pk": 174,
+    "fields": {
+        "slug": "kosonsoy",
+        "region": 6,
+        "name": "Kosonsoy"
+    }
+},
+{
+    "model": "apps.city",
+    "pk": 175,
+    "fields": {
+        "slug": "pop",
+        "region": 6,
+        "name": "Pop"
+    }
+},
+{
+    "model": "apps.city",
+    "pk": 176,
+    "fields": {
+        "slug": "toraqorgon",
+        "region": 6,
+        "name": "Toraqorgon"
+    }
+},
+{
+    "model": "apps.city",
+    "pk": 177,
+    "fields": {
+        "slug": "uchqorgon",
+        "region": 6,
+        "name": "Uchqorgon"
+    }
+},
+{
+    "model": "apps.city",
+    "pk": 178,
+    "fields": {
+        "slug": "navoiy-city",
+        "region": 7,
+        "name": "Navoiy"
+    }
+},
+{
+    "model": "apps.city",
+    "pk": 179,
+    "fields": {
+        "slug": "gazli",
+        "region": 7,
+        "name": "Gazli"
+    }
+},
+{
+    "model": "apps.city",
+    "pk": 180,
+    "fields": {
+        "slug": "gozgon",
+        "region": 7,
+        "name": "Gozgon"
+    }
+},
+{
+    "model": "apps.city",
+    "pk": 181,
+    "fields": {
+        "slug": "nurota",
+        "region": 7,
+        "name": "Nurota"
+    }
+},
+{
+    "model": "apps.city",
+    "pk": 182,
+    "fields": {
+        "slug": "qiziltepa",
+        "region": 7,
+        "name": "Qiziltepa"
+    }
+},
+{
+    "model": "apps.city",
+    "pk": 183,
+    "fields": {
+        "slug": "uchquduq",
+        "region": 7,
+        "name": "Uchquduq"
+    }
+},
+{
+    "model": "apps.city",
+    "pk": 184,
+    "fields": {
+        "slug": "yangirabod",
+        "region": 7,
+        "name": "Yangirabod"
+    }
+},
+{
+    "model": "apps.city",
+    "pk": 185,
+    "fields": {
+        "slug": "zarafshon",
+        "region": 7,
+        "name": "Zarafshon"
+    }
+},
+{
+    "model": "apps.city",
+    "pk": 186,
+    "fields": {
+        "slug": "qarshi",
+        "region": 8,
+        "name": "Qarshi"
+    }
+},
+{
+    "model": "apps.city",
+    "pk": 187,
+    "fields": {
+        "slug": "beshkent",
+        "region": 8,
+        "name": "Beshkent"
+    }
+},
+{
+    "model": "apps.city",
+    "pk": 188,
+    "fields": {
+        "slug": "chiroqchi",
+        "region": 8,
+        "name": "Chiroqchi"
+    }
+},
+{
+    "model": "apps.city",
+    "pk": 189,
+    "fields": {
+        "slug": "guzor",
+        "region": 8,
+        "name": "Guzor"
+    }
+},
+{
+    "model": "apps.city",
+    "pk": 190,
+    "fields": {
+        "slug": "kitob",
+        "region": 8,
+        "name": "Kitob"
+    }
+},
+{
+    "model": "apps.city",
+    "pk": 191,
+    "fields": {
+        "slug": "koson",
+        "region": 8,
+        "name": "Koson"
+    }
+},
+{
+    "model": "apps.city",
+    "pk": 192,
+    "fields": {
+        "slug": "muborak",
+        "region": 8,
+        "name": "Muborak"
+    }
+},
+{
+    "model": "apps.city",
+    "pk": 193,
+    "fields": {
+        "slug": "qamashi",
+        "region": 8,
+        "name": "Qamashi"
+    }
+},
+{
+    "model": "apps.city",
+    "pk": 194,
+    "fields": {
+        "slug": "shahrisabz",
+        "region": 8,
+        "name": "Shahrisabz"
+    }
+},
+{
+    "model": "apps.city",
+    "pk": 195,
+    "fields": {
+        "slug": "tallimarjon",
+        "region": 8,
+        "name": "Tallimarjon"
+    }
+},
+{
+    "model": "apps.city",
+    "pk": 196,
+    "fields": {
+        "slug": "yakkabog",
+        "region": 8,
+        "name": "Yakkabog"
+    }
+},
+{
+    "model": "apps.city",
+    "pk": 197,
+    "fields": {
+        "slug": "yangi-nishon",
+        "region": 8,
+        "name": "Yangi Nishon"
+    }
+},
+{
+    "model": "apps.city",
+    "pk": 198,
+    "fields": {
+        "slug": "samarqand-city",
+        "region": 9,
+        "name": "Samarqand"
+    }
+},
+{
+    "model": "apps.city",
+    "pk": 199,
+    "fields": {
+        "slug": "bulungur",
+        "region": 9,
+        "name": "Bulungur"
+    }
+},
+{
+    "model": "apps.city",
+    "pk": 200,
+    "fields": {
+        "slug": "chelak",
+        "region": 9,
+        "name": "Chelak"
+    }
+},
+{
+    "model": "apps.city",
+    "pk": 201,
+    "fields": {
+        "slug": "ishtixon",
+        "region": 9,
+        "name": "Ishtixon"
+    }
+},
+{
+    "model": "apps.city",
+    "pk": 202,
+    "fields": {
+        "slug": "jomboy",
+        "region": 9,
+        "name": "Jomboy"
+    }
+},
+{
+    "model": "apps.city",
+    "pk": 203,
+    "fields": {
+        "slug": "juma",
+        "region": 9,
+        "name": "Juma"
+    }
+},
+{
+    "model": "apps.city",
+    "pk": 204,
+    "fields": {
+        "slug": "kattakurgan",
+        "region": 9,
+        "name": "Kattakurgan"
+    }
+},
+{
+    "model": "apps.city",
+    "pk": 205,
+    "fields": {
+        "slug": "nurobod",
+        "region": 9,
+        "name": "Nurobod"
+    }
+},
+{
+    "model": "apps.city",
+    "pk": 206,
+    "fields": {
+        "slug": "oqtosh",
+        "region": 9,
+        "name": "Oqtosh"
+    }
+},
+{
+    "model": "apps.city",
+    "pk": 207,
+    "fields": {
+        "slug": "payariq",
+        "region": 9,
+        "name": "Payariq"
+    }
+},
+{
+    "model": "apps.city",
+    "pk": 208,
+    "fields": {
+        "slug": "urgut",
+        "region": 9,
+        "name": "Urgut"
+    }
+},
+{
+    "model": "apps.city",
+    "pk": 209,
+    "fields": {
+        "slug": "baxt",
+        "region": 10,
+        "name": "Baxt"
+    }
+},
+{
+    "model": "apps.city",
+    "pk": 210,
+    "fields": {
+        "slug": "guliston",
+        "region": 10,
+        "name": "Guliston"
+    }
+},
+{
+    "model": "apps.city",
+    "pk": 211,
+    "fields": {
+        "slug": "shirin",
+        "region": 10,
+        "name": "Shirin"
+    }
+},
+{
+    "model": "apps.city",
+    "pk": 212,
+    "fields": {
+        "slug": "sirdaryo-city",
+        "region": 10,
+        "name": "Sirdaryo"
+    }
+},
+{
+    "model": "apps.city",
+    "pk": 213,
+    "fields": {
+        "slug": "yangiyer",
+        "region": 10,
+        "name": "Yangiyer"
+    }
+},
+{
+    "model": "apps.city",
+    "pk": 214,
+    "fields": {
+        "slug": "termiz",
+        "region": 11,
+        "name": "Termiz"
+    }
+},
+{
+    "model": "apps.city",
+    "pk": 215,
+    "fields": {
+        "slug": "boysun",
+        "region": 11,
+        "name": "Boysun"
+    }
+},
+{
+    "model": "apps.city",
+    "pk": 216,
+    "fields": {
+        "slug": "denov",
+        "region": 11,
+        "name": "Denov"
+    }
+},
+{
+    "model": "apps.city",
+    "pk": 217,
+    "fields": {
+        "slug": "jarqorgon",
+        "region": 11,
+        "name": "Jarqorgon"
+    }
+},
+{
+    "model": "apps.city",
+    "pk": 218,
+    "fields": {
+        "slug": "qumqorgon",
+        "region": 11,
+        "name": "Qumqorgon"
+    }
+},
+{
+    "model": "apps.city",
+    "pk": 219,
+    "fields": {
+        "slug": "sherobod",
+        "region": 11,
+        "name": "Sherobod"
+    }
+},
+{
+    "model": "apps.city",
+    "pk": 220,
+    "fields": {
+        "slug": "shorchi",
+        "region": 11,
+        "name": "Shorchi"
+    }
+},
+{
+    "model": "apps.city",
+    "pk": 221,
+    "fields": {
+        "slug": "shargun",
+        "region": 11,
+        "name": "Shargun"
+    }
+},
+{
+    "model": "apps.city",
+    "pk": 222,
+    "fields": {
+        "slug": "bekobod",
+        "region": 2,
+        "name": "Bekobod"
+    }
+},
+{
+    "model": "apps.city",
+    "pk": 223,
+    "fields": {
+        "slug": "boka",
+        "region": 2,
+        "name": "Boka"
+    }
+},
+{
+    "model": "apps.city",
+    "pk": 224,
+    "fields": {
+        "slug": "chinoz",
+        "region": 2,
+        "name": "Chinoz"
+    }
+},
+{
+    "model": "apps.city",
+    "pk": 225,
+    "fields": {
+        "slug": "chirchiq",
+        "region": 2,
+        "name": "Chirchiq"
+    }
+},
+{
+    "model": "apps.city",
+    "pk": 226,
+    "fields": {
+        "slug": "dostobod-city",
+        "region": 2,
+        "name": "Dostobod"
+    }
+},
+{
+    "model": "apps.city",
+    "pk": 227,
+    "fields": {
+        "slug": "gazalkent",
+        "region": 2,
+        "name": "Gazalkent"
+    }
+},
+{
+    "model": "apps.city",
+    "pk": 228,
+    "fields": {
+        "slug": "keles",
+        "region": 2,
+        "name": "Keles"
+    }
+},
+{
+    "model": "apps.city",
+    "pk": 229,
+    "fields": {
+        "slug": "nurafshon",
+        "region": 2,
+        "name": "Nurafshon"
+    }
+},
+{
+    "model": "apps.city",
+    "pk": 230,
+    "fields": {
+        "slug": "ohangaron",
+        "region": 2,
+        "name": "Ohangaron"
+    }
+},
+{
+    "model": "apps.city",
+    "pk": 231,
+    "fields": {
+        "slug": "olmaliq",
+        "region": 2,
+        "name": "Olmaliq"
+    }
+},
+{
+    "model": "apps.city",
+    "pk": 232,
+    "fields": {
+        "slug": "oqqorgon",
+        "region": 2,
+        "name": "Oqqorgon"
+    }
+},
+{
+    "model": "apps.city",
+    "pk": 233,
+    "fields": {
+        "slug": "parkent",
+        "region": 2,
+        "name": "Parkent"
+    }
+},
+{
+    "model": "apps.city",
+    "pk": 234,
+    "fields": {
+        "slug": "piskent",
+        "region": 2,
+        "name": "Piskent"
+    }
+},
+{
+    "model": "apps.city",
+    "pk": 235,
+    "fields": {
+        "slug": "yangiyol",
+        "region": 2,
+        "name": "Yangiyol"
+    }
+},
+{
+    "model": "apps.city",
+    "pk": 236,
+    "fields": {
+        "slug": "urganch",
+        "region": 14,
+        "name": "Urganch"
+    }
+},
+{
+    "model": "apps.city",
+    "pk": 237,
+    "fields": {
+        "slug": "xiva",
+        "region": 14,
+        "name": "Xiva"
+    }
+},
+{
+    "model": "apps.city",
+    "pk": 238,
+    "fields": {
+        "slug": "pitnak",
+        "region": 14,
+        "name": "Pitnak"
+    }
+}
+]

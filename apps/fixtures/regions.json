@@ -1,0 +1,106 @@
+[
+{
+    "model": "apps.region",
+    "pk": 1,
+    "fields": {
+        "slug": "qoraqalpogiston-respublikasi",
+        "name": "Qoraqalpogiston Respublikasi"
+    }
+},
+{
+    "model": "apps.region",
+    "pk": 2,
+    "fields": {
+        "slug": "toshkent",
+        "name": "Toshkent"
+    }
+},
+{
+    "model": "apps.region",
+    "pk": 3,
+    "fields": {
+        "slug": "buxoro",
+        "name": "Buxoro"
+    }
+},
+{
+    "model": "apps.region",
+    "pk": 4,
+    "fields": {
+        "slug": "fargona",
+        "name": "Fargona"
+    }
+},
+{
+    "model": "apps.region",
+    "pk": 5,
+    "fields": {
+        "slug": "jizzax",
+        "name": "Jizzax"
+    }
+},
+{
+    "model": "apps.region",
+    "pk": 6,
+    "fields": {
+        "slug": "namangan",
+        "name": "Namangan"
+    }
+},
+{
+    "model": "apps.region",
+    "pk": 7,
+    "fields": {
+        "slug": "navoiy",
+        "name": "Navoiy"
+    }
+},
+{
+    "model": "apps.region",
+    "pk": 8,
+    "fields": {
+        "slug": "qashqadaryo",
+        "name": "Qashqadaryo"
+    }
+},
+{
+    "model": "apps.region",
+    "pk": 9,
+    "fields": {
+        "slug": "samarqand",
+        "name": "Samarqand"
+    }
+},
+{
+    "model": "apps.region",
+    "pk": 10,
+    "fields": {
+        "slug": "sirdaryo",
+        "name": "Sirdaryo"
+    }
+},
+{
+    "model": "apps.region",
+    "pk": 11,
+    "fields": {
+        "slug": "surxondaryo",
+        "name": "Surxondaryo"
+    }
+},
+{
+    "model": "apps.region",
+    "pk": 14,
+    "fields": {
+        "slug": "xorazm",
+        "name": "Xorazm"
+    }
+},
+{
+    "model": "apps.region",
+    "pk": 15,
+    "fields": {
+        "slug": "andijon",
+        "name": "Andijon"
+    }
+}
+]

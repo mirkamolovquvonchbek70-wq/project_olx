@@ -1,0 +1,344 @@
+{% extends "apps/base.html" %}
+
+{% block cod_css %}
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <style>
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f2f4f5;
+    color: #002f34;
+  }
+
+  .olx-container {
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+
+  .empty-illustration {
+    position: relative;
+    width: 106px;
+    height: 106px;
+    margin: 0 auto 24px;
+    border-radius: 50%;
+    background: #f6a38f;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: visible;
+  }
+
+  .hair-top {
+    position: absolute;
+    width: 28px;
+    height: 28px;
+    background: #002f34;
+    border-radius: 50%;
+    top: -2px;
+    left: 40px;
+  }
+
+  .hair-main {
+    position: absolute;
+    width: 42px;
+    height: 28px;
+    background: #002f34;
+    border-radius: 50% 50% 45% 45%;
+    top: 17px;
+    left: 22px;
+    transform: rotate(-22deg);
+  }
+
+  .face {
+    position: absolute;
+    width: 32px;
+    height: 34px;
+    background: #ffd6c8;
+    border-radius: 45%;
+    top: 30px;
+    left: 26px;
+  }
+
+  .body {
+    position: absolute;
+    width: 62px;
+    height: 30px;
+    background: #002f34;
+    border-radius: 50% 50% 40% 40%;
+    bottom: 0;
+    left: 16px;
+  }
+
+  .hand {
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    background: #ffd6c8;
+    border-radius: 50%;
+    right: 12px;
+    bottom: 8px;
+  }
+
+  .eye {
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    background: #002f34;
+    border-radius: 50%;
+    top: 48px;
+  }
+
+  .eye.left {
+    left: 37px;
+  }
+
+  .eye.right {
+    left: 50px;
+  }
+
+  .magnifier {
+    position: absolute;
+    width: 46px;
+    height: 46px;
+    border: 6px solid #ff5636;
+    border-radius: 50%;
+    right: 14px;
+    top: 30px;
+    background: #ffe9e2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+  }
+
+  .magnifier::after {
+    content: "";
+    position: absolute;
+    width: 18px;
+    height: 6px;
+    background: #ff5636;
+    border-radius: 10px;
+    right: -9px;
+    bottom: -3px;
+    transform: rotate(45deg);
+  }
+
+  .magnifier i {
+    color: #002f34;
+    font-size: 17px;
+  }
+
+
+  .tabs-line {
+    display: flex;
+    align-items: flex-end;
+    gap: 48px;
+    border-bottom: 1px solid #cfd9db;
+  }
+
+  .tab-link {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    height: 64px;
+    font-size: 18px;
+    font-weight: 400;
+    color: #406367;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: color 0.2s ease;
+  }
+
+  .tab-link:hover {
+    color: #002f34;
+  }
+
+  .tab-link::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -1px;
+    height: 3px;
+    background: transparent;
+  }
+
+  .tab-link.active {
+    color: #002f34;
+    font-weight: 700;
+  }
+
+  .tab-link.active::after {
+    background: #002f34;
+  }
+</style>
+{% endblock %}
+
+{% block cod_html %}
+<main class="olx-container">
+  <section class="px-6 pt-10">
+    <h1 class="text-[54px] leading-[1.05] font-bold text-[#002f34]">
+      Saralangan qidiruv natijalar
+    </h1>
+  </section>
+
+<section class="px-6 pt-16">
+  <div class="tabs-line" id="tabs">
+    <a href="#" class="tab-link active">Saralangan e'lonlar</a>
+    <a href="#" class="tab-link">Saqlangan qidiruvlar</a>
+    <a href="#" class="tab-link">Yaqinda ko'rib chiqilganlar</a>
+  </div>
+</section>
+
+  <section class="min-h-[520px] px-6 py-10">
+    <div class="grid gap-6">
+      {% for announcement in favorites %}
+  <div
+    class="favorite-card bg-white rounded overflow-hidden shadow-sm flex flex-col md:flex-row relative group hover:shadow-md transition"
+    data-card-id="{{ announcement.pk }}"
+  >
+    <div class="w-full md:w-72 h-48 relative flex-shrink-0">
+      {% if announcement.images.first %}
+        <img src="{{ announcement.images.first.image.url }}" class="w-full h-full object-cover" alt="{{ announcement.name }}">
+      {% else %}
+        <div class="w-full h-full bg-gray-200 flex items-center justify-center text-gray-500">
+          Нет фото
+        </div>
+      {% endif %}
+      <span class="absolute bottom-2 left-2 bg-[#23e5db] text-[#002f34] text-[10px] font-bold px-1 uppercase">ТОП</span>
+    </div>
+
+    <div class="p-4 flex flex-col justify-between flex-grow">
+      <div>
+        <div class="flex justify-between items-start gap-4">
+          <h4 class="text-lg text-[#002f34] leading-tight group-hover:text-cyan-600 cursor-pointer">
+            {{ announcement.name }}
+          </h4>
+
+          <button
+            type="button"
+            class="favorite-btn text-xl cursor-pointer hover:text-red-500"
+            data-url="{% url 'toggle_favorite' announcement.pk %}"
+            data-id="{{ announcement.pk }}"
+          >
+            <i class="fa-solid fa-heart text-red-500"></i>
+          </button>
+        </div>
+
+        <p class="text-xs text-gray-500 mt-2">
+          Ташкент, Юнусабадский район - Сегодня в 12:45
+        </p>
+      </div>
+
+      <div class="flex justify-between items-end mt-4">
+        <div class="text-xs text-gray-500">
+          <i class="fa-regular fa-calendar mr-1"></i> 2025 - 0 км
+        </div>
+
+        <div class="text-right">
+          <p class="text-xl font-bold text-[#002f34]">{{ announcement.price }} сум</p>
+          <p class="text-xs text-gray-400">Договорная</p>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endfor %}
+
+<div
+  id="empty-state"
+  class="{% if favorites %}hidden{% endif %} flex flex-col items-center justify-center py-20 text-center"
+>
+  <div class="empty-illustration">
+    <div class="hair-top"></div>
+    <div class="hair-main"></div>
+    <div class="face"></div>
+    <div class="body"></div>
+    <div class="hand"></div>
+    <div class="eye left"></div>
+    <div class="eye right"></div>
+    <div class="magnifier">
+      <i class="fa-solid fa-heart"></i>
+    </div>
+  </div>
+
+  <h2 class="text-2xl font-bold mb-2">Пока нет избранных объявлений</h2>
+  <p class="text-gray-500">Добавьте объявления в избранное, чтобы они появились здесь.</p>
+</div>
+    </div>
+  </section>
+</main>
+{% endblock %}
+
+{% block cod_js %}
+<script>
+function getCookie(name) {
+  let cookieValue = null;
+  if (document.cookie && document.cookie !== "") {
+    const cookies = document.cookie.split(";");
+    for (let i = 0; i < cookies.length; i++) {
+      const cookie = cookies[i].trim();
+      if (cookie.substring(0, name.length + 1) === (name + "=")) {
+        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+        break;
+      }
+    }
+  }
+  return cookieValue;
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+  const tabs = document.querySelectorAll("#tabs .tab-link");
+  const csrfToken = getCookie("csrftoken");
+
+  tabs.forEach(tab => {
+    tab.addEventListener("click", function (e) {
+      e.preventDefault();
+      tabs.forEach(item => item.classList.remove("active"));
+      this.classList.add("active");
+    });
+  });
+
+  document.querySelectorAll(".favorite-btn").forEach(button => {
+    button.addEventListener("click", async function () {
+      const url = this.dataset.url;
+      const cardId = this.dataset.id;
+      const card = document.querySelector(`[data-card-id="${cardId}"]`);
+      const emptyState = document.getElementById("empty-state");
+
+      try {
+        const response = await fetch(url, {
+          method: "POST",
+          credentials: "same-origin",
+          headers: {
+            "X-CSRFToken": csrfToken,
+            "X-Requested-With": "XMLHttpRequest",
+            "Accept": "application/json"
+          }
+        });
+
+        if (!response.ok) {
+          const text = await response.text();
+          console.error("Server response:", response.status, text);
+          throw new Error("Request failed");
+        }
+
+        const data = await response.json();
+
+        if (!data.is_favorite && card) {
+          card.remove();
+        }
+
+        const cardsLeft = document.querySelectorAll(".favorite-card").length;
+        if (cardsLeft === 0 && emptyState) {
+          emptyState.classList.remove("hidden");
+        }
+      } catch (error) {
+        console.error("Favorite error:", error);
+      }
+    });
+  });
+});
+</script>
+{% endblock %}

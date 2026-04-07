@@ -1,0 +1,211 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Вход — OLX.ua</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+      body {
+        font-family: 'Roboto', sans-serif;
+        background-color: #f2f4f5;
+      }
+      .olx-btn-social {
+        transition: all 0.2s;
+        border: 2px solid #002f34;
+      }
+      .olx-btn-social:hover {
+        background-color: #f2f4f5;
+      }
+      .olx-input {
+        background-color: #f2f4f5;
+        border: 2px solid transparent;
+      }
+      .olx-input:focus {
+        border-color: #002f34;
+        background-color: #fff;
+        outline: none;
+      }
+      .olx-primary-btn {
+        background-color: #002f34;
+        color: #fff;
+        transition: background-color 0.2s;
+      }
+      .olx-primary-btn:hover {
+        background-color: #003d44;
+      }
+      /* Pure CSS Tab Toggle (Checkbox Hack) */
+      #tab-register:checked ~ .form-container .login-form { display: none; }
+      #tab-register:checked ~ .form-container .register-form { display: block; }
+      #tab-login:checked ~ .form-container .login-form { display: block; }
+      #tab-login:checked ~ .form-container .register-form { display: none; }
+      
+      .tab-label {
+        cursor: pointer;
+        padding-bottom: 12px;
+        color: #406367;
+        font-weight: 500;
+        text-align: center;
+        flex: 1;
+        border-bottom: 2px solid #d8dfe0;
+      }
+      input[type="radio"]:checked + .tab-label {
+        color: #002f34;
+        border-bottom: 4px solid #002f34;
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@^19.2.4",
+    "react/": "https://esm.sh/react@^19.2.4/",
+    "@google/genai": "https://esm.sh/@google/genai@^1.41.0"
+  }
+}
+</script>
+</head>
+  <body class="flex items-center justify-center min-h-screen p-4">
+    <div class="bg-white w-full max-w-[450px] p-8 rounded-sm shadow-sm border border-gray-100">
+      
+      <!-- Social Logins -->
+      <div class="space-y-4 mb-6">
+        <button class="olx-btn-social w-full flex items-center justify-center gap-3 py-3 rounded-md font-bold text-[#002f34]">
+          <i class="fab fa-facebook text-[#1877f2] text-xl"></i>
+          <span>Продолжить через Facebook</span>
+        </button>
+        
+        <button class="olx-btn-social w-full flex items-center justify-center gap-3 py-3 rounded-md font-bold text-[#002f34]">
+          <i class="fab fa-apple text-black text-xl"></i>
+          <span>Продолжить через Apple</span>
+        </button>
+        
+        <button class="olx-btn-social w-full flex items-center justify-center gap-3 py-3 rounded-md font-bold text-[#002f34]">
+          <img src="https://www.gstatic.com/images/branding/product/1x/gsa_512dp.png" class="w-5 h-5" alt="Google">
+          <span>Продолжить через Google</span>
+        </button>
+      </div>
+
+      <!-- OR Separator -->
+      <div class="relative flex py-5 items-center">
+        <div class="flex-grow border-t border-gray-300"></div>
+        <span class="flex-shrink mx-4 text-gray-500 font-medium">или</span>
+        <div class="flex-grow border-t border-gray-300"></div>
+      </div>
+
+      <!-- Tabs -->
+      <div class="flex mb-8">
+        <input type="radio" name="tabs" id="tab-login" class="hidden" >
+        <a href="{%   url "login_page" %}" for="tab-login" class="tab-label">Войти</a>
+        
+        <input type="radio" name="tabs" id="tab-register" class="hidden" checked>
+        <label for="tab-register" class="tab-label">Зарегистрироваться</label>
+      </div>
+
+      <!-- Form Container -->
+      <!-- Register Form -->
+<form method="post" action="{% url 'register_page' %}" class="register-form space-y-5">
+    {% csrf_token %}
+  <!-- Email -->
+  <div>
+    <label class="block text-[#002f34] text-[14px] mb-2">
+      Электронная почта или телефон
+    </label>
+    <input type="email" name="email"
+      class="w-full h-[52px] bg-[#f2f4f5] rounded-md px-4
+             focus:bg-white focus:border-2 focus:border-[#002f34] outline-none">
+  </div>
+
+  <!-- Password -->
+<div class="relative">
+  <label class="block text-[#002f34] text-[14px] mb-2">
+    Пароль
+  </label>
+
+  <input id="passwordInput" type="password" name="password"
+    class="w-full h-[52px] bg-[#f2f4f5] rounded-md px-4 pr-12
+           focus:bg-white focus:border-2 focus:border-[#002f34] outline-none">
+
+  <button id="togglePassword" type="button"
+    class="absolute right-4 top-[44px] text-[#406367] hover:text-[#002f34]">
+    <i id="eyeIcon" class="far fa-eye text-lg"></i>
+  </button>
+</div>
+
+  <!-- Password Rules -->
+  <div class="text-[13px] text-[#406367] leading-6">
+    <p class="mb-2">Пароль должен содержать:</p>
+    <ul class="space-y-1">
+      <li class="flex items-center gap-2">
+        <span class="w-2 h-[2px] bg-[#406367]"></span>
+        не менее 9 символов;
+      </li>
+      <li class="flex items-center gap-2">
+        <span class="w-2 h-[2px] bg-[#406367]"></span>
+        прописную букву;
+      </li>
+      <li class="flex items-center gap-2">
+        <span class="w-2 h-[2px] bg-[#406367]"></span>
+        строчную букву;
+      </li>
+      <li class="flex items-center gap-2">
+        <span class="w-2 h-[2px] bg-[#406367]"></span>
+        минимум одну цифру.
+      </li>
+    </ul>
+  </div>
+
+  <!-- Terms -->
+  <div class="text-[13px] text-[#406367] leading-5">
+    Я соглашаюсь с
+    <a href="#" class="font-bold text-[#002f34] hover:underline">
+      Условия использования
+    </a>,
+    а также с передачей и обработкой моих данных в OLX.
+    Я подтверждаю свое совершеннолетие и ответственность за размещенные объявления.
+  </div>
+
+  <!-- Newsletter -->
+  <div class="flex items-start gap-3">
+    <input type="checkbox"
+      class="w-5 h-5 border-2 border-[#002f34] rounded">
+    <span class="text-[14px] text-[#002f34]">
+      Да, я хочу получать информацию о новостях и акциях на OLX.
+    </span>
+  </div>
+
+  <!-- Submit -->
+  <button type="submit"
+    class="w-full h-[56px] bg-[#002f34] hover:bg-[#003d44]
+           text-white font-bold text-lg rounded-md transition">
+    Зарегистрироваться
+  </button>
+
+</form>
+
+</div>
+
+      
+
+    </div>
+  <script>
+  const passwordInput = document.getElementById("passwordInput");
+  const togglePassword = document.getElementById("togglePassword");
+  const eyeIcon = document.getElementById("eyeIcon");
+
+  togglePassword.addEventListener("click", function () {
+    if (passwordInput.type === "password") {
+      passwordInput.type = "text";
+      eyeIcon.classList.remove("fa-eye");
+      eyeIcon.classList.add("fa-eye-slash");
+    } else {
+      passwordInput.type = "password";
+      eyeIcon.classList.remove("fa-eye-slash");
+      eyeIcon.classList.add("fa-eye");
+    }
+  });
+</script>
+  </body>
+</html>

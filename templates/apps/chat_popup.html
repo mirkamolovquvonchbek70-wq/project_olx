@@ -1,0 +1,355 @@
+<style>
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: #efeae2;
+    }
+
+    .tg-chat {
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        background: #efeae2;
+    }
+
+    .tg-top {
+        height: 58px;
+        background: #ffffff;
+        border-bottom: 1px solid #e6e6e6;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 14px;
+        flex-shrink: 0;
+    }
+
+    .tg-user-wrap {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .tg-avatar {
+        width: 38px;
+        height: 38px;
+        border-radius: 50%;
+        background: #d8dfe0;
+        flex-shrink: 0;
+    }
+
+    .tg-name {
+        font-size: 15px;
+        font-weight: 700;
+        color: #0f2f35;
+    }
+
+    .tg-status {
+        font-size: 12px;
+        color: #6b7b7d;
+        margin-top: 2px;
+    }
+
+    .tg-product {
+        background: #ffffff;
+        border-bottom: 1px solid #e6e6e6;
+        padding: 12px 14px;
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        flex-shrink: 0;
+    }
+
+    .tg-product img {
+        width: 46px;
+        height: 46px;
+        object-fit: cover;
+        border-radius: 6px;
+    }
+
+    .tg-product-title {
+        font-size: 14px;
+        color: #0f2f35;
+    }
+
+    .tg-product-price {
+        font-size: 13px;
+        color: #0f2f35;
+        font-weight: 700;
+        margin-top: 4px;
+    }
+
+    .tg-messages {
+        flex: 1;
+        overflow-y: auto;
+        padding: 14px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .msg-row {
+        display: flex;
+    }
+
+    .msg-row.mine {
+        justify-content: flex-end;
+    }
+
+    .msg-row.other {
+        justify-content: flex-start;
+    }
+
+    .msg-bubble {
+        max-width: 76%;
+        border-radius: 12px;
+        padding: 8px 10px 6px;
+        font-size: 14px;
+        line-height: 1.4;
+        word-break: break-word;
+    }
+
+    .msg-row.mine .msg-bubble {
+        background: #d9fdd3;
+    }
+
+    .msg-row.other .msg-bubble {
+        background: #ffffff;
+    }
+
+    .msg-meta {
+        margin-top: 4px;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        gap: 4px;
+        font-size: 11px;
+        color: #6b7b7d;
+    }
+
+    .msg-checks {
+        font-size: 12px;
+        letter-spacing: -1px;
+    }
+
+    .msg-checks.read {
+        color: #53bdeb;
+    }
+
+    .tg-input-wrap {
+        background: #ffffff;
+        padding: 10px 12px;
+        border-top: 1px solid #e6e6e6;
+        display: flex;
+        gap: 8px;
+        align-items: center;
+        flex-shrink: 0;
+    }
+
+    .tg-input {
+        flex: 1;
+        height: 42px;
+        border: none;
+        outline: none;
+        font-size: 14px;
+        background: #ffffff;
+    }
+
+    .tg-send {
+        width: 42px;
+        height: 42px;
+        border: none;
+        border-radius: 50%;
+        background: #002f34;
+        color: #fff;
+        cursor: pointer;
+        font-size: 16px;
+    }
+</style>
+
+<div class="tg-chat">
+    <div class="tg-top">
+        <div class="tg-user-wrap">
+            <div class="tg-avatar"></div>
+            <div>
+                <div class="tg-name">
+                    {% if request.user == current_chat.seller %}
+                        {{ current_chat.buyer.first_name|default:current_chat.buyer.email }}
+                    {% else %}
+                        {{ current_chat.seller.first_name|default:current_chat.seller.email }}
+                    {% endif %}
+                </div>
+                <div class="tg-status" id="chatPartnerStatus">
+                    {% if partner_presence and partner_presence.is_online %}
+                        онлайн
+                    {% elif partner_presence %}
+                        был(а) в сети {{ partner_presence.last_seen|date:"H:i" }}
+                    {% else %}
+                        не в сети
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="tg-product">
+        {% if current_chat.announcement.images.first %}
+            <img src="{{ current_chat.announcement.images.first.image.url }}" alt="">
+        {% else %}
+            <div style="width:46px;height:46px;border-radius:6px;background:#eee;"></div>
+        {% endif %}
+        <div>
+            <div class="tg-product-title">{{ current_chat.announcement.name }}</div>
+            <div class="tg-product-price">{{ current_chat.announcement.price }} сум</div>
+        </div>
+    </div>
+
+    <div class="tg-messages" id="chatMessages">
+        {% for message in messages %}
+            <div class="msg-row {% if message.sender == request.user %}mine{% else %}other{% endif %}" data-message-id="{{ message.id }}">
+                <div class="msg-bubble">
+                    <div>{{ message.text }}</div>
+                    <div class="msg-meta">
+                        <span>{{ message.created_at|date:"H:i" }}</span>
+                        {% if message.sender == request.user %}
+                            <span class="msg-checks {% if message.read_at %}read{% endif %}">
+                                {% if message.read_at %}
+                                    ✓✓
+                                {% elif message.delivered_at %}
+                                    ✓✓
+                                {% else %}
+                                    ✓
+                                {% endif %}
+                            </span>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+    <div class="tg-input-wrap">
+        <input type="text" id="chatMessageInput" class="tg-input" placeholder="Напишите сообщение...">
+        <button type="button" id="sendMessageBtn" class="tg-send">➤</button>
+    </div>
+</div>
+
+<script>
+    const chatId = "{{ current_chat.id }}";
+    const currentUserId = "{{ request.user.id }}";
+    const partnerUserId = "{{ partner_user.id }}";
+
+    const protocol = window.location.protocol === "https:" ? "wss" : "ws";
+    const chatSocket = new WebSocket(`${protocol}://${window.location.host}/ws/chat/${chatId}/`);
+
+    const input = document.getElementById("chatMessageInput");
+    const sendBtn = document.getElementById("sendMessageBtn");
+    const messagesBox = document.getElementById("chatMessages");
+    const partnerStatus = document.getElementById("chatPartnerStatus");
+
+    function scrollBottom() {
+        messagesBox.scrollTop = messagesBox.scrollHeight;
+    }
+
+    scrollBottom();
+
+    function checksHtml(status) {
+        if (status === "read") {
+            return '<span class="msg-checks read">✓✓</span>';
+        }
+        if (status === "delivered") {
+            return '<span class="msg-checks">✓✓</span>';
+        }
+        return '<span class="msg-checks">✓</span>';
+    }
+
+    function appendMessage(messageId, text, isMine, time, status="sent") {
+        const row = document.createElement("div");
+        row.className = `msg-row ${isMine ? "mine" : "other"}`;
+        row.dataset.messageId = messageId;
+
+        row.innerHTML = `
+            <div class="msg-bubble">
+                <div>${text}</div>
+                <div class="msg-meta">
+                    <span>${time}</span>
+                    ${isMine ? checksHtml(status) : ""}
+                </div>
+            </div>
+        `;
+
+        messagesBox.appendChild(row);
+        scrollBottom();
+    }
+
+    function markMessagesRead(ids) {
+        ids.forEach(id => {
+            const row = document.querySelector(`.msg-row[data-message-id="${id}"]`);
+            if (!row) return;
+
+            const checks = row.querySelector(".msg-checks");
+            if (checks) {
+                checks.textContent = "✓✓";
+                checks.classList.add("read");
+            }
+        });
+    }
+
+    chatSocket.onopen = function() {
+        chatSocket.send(JSON.stringify({ action: "read_messages" }));
+    };
+
+    chatSocket.onmessage = function(e) {
+        const data = JSON.parse(e.data);
+
+        if (data.type === "chat_message") {
+            appendMessage(
+                data.message_id,
+                data.message,
+                String(data.sender_id) === String(currentUserId),
+                data.created_at,
+                data.status
+            );
+
+            if (String(data.sender_id) !== String(currentUserId)) {
+                chatSocket.send(JSON.stringify({ action: "read_messages" }));
+            }
+        }
+
+        if (data.type === "presence") {
+            if (String(data.user_id) === String(partnerUserId)) {
+                if (data.is_online) {
+                    partnerStatus.textContent = "онлайн";
+                } else {
+                    partnerStatus.textContent = data.last_seen ? `был(а) в сети ${data.last_seen}` : "не в сети";
+                }
+            }
+        }
+
+        if (data.type === "messages_read") {
+            markMessagesRead(data.message_ids);
+        }
+    };
+
+    function sendMessage() {
+        const message = input.value.trim();
+        if (!message) return;
+
+        chatSocket.send(JSON.stringify({
+            action: "send_message",
+            message: message
+        }));
+
+        input.value = "";
+        input.focus();
+    }
+
+    sendBtn.addEventListener("click", sendMessage);
+
+    input.addEventListener("keydown", function(e) {
+        if (e.key === "Enter") {
+            e.preventDefault();
+            sendMessage();
+        }
+    });
+</script>

@@ -1,0 +1,627 @@
+{% extends "apps/base.html" %}
+{% block cod_css %}
+        <script src="https://cdn.tailwindcss.com"></script>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+
+  body {
+    background-color: #f2f4f5;
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+
+  .search-form {
+    overflow: visible !important;
+  }
+
+  .location-dropdown {
+    position: relative;
+  }
+
+  .location-toggle {
+    width: 100%;
+    min-height: 64px;
+    background: #fff;
+    border: none;
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    text-align: left;
+  }
+
+  .location-toggle.open {
+    box-shadow: inset 0 0 0 2px #00a49f;
+  }
+
+  .location-toggle-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-width: 0;
+  }
+
+  .location-label {
+    color: #002f34;
+    font-size: 14px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .location-arrow {
+    color: #5f6f73;
+    font-size: 12px;
+    transition: transform .2s;
+  }
+
+  .location-arrow.rotate {
+    transform: rotate(180deg);
+  }
+
+  .location-menu {
+    position: absolute;
+    top: calc(100% + 2px);
+    left: 0;
+    width: 100%;
+    min-width: 320px;
+    background: #fff;
+    border: 1px solid #d8dfe0;
+    box-shadow: 0 8px 24px rgba(0,0,0,.12);
+    z-index: 1000;
+  }
+
+  .location-menu.hidden {
+    display: none;
+  }
+
+  .location-menu-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 16px 8px;
+    border-bottom: 1px solid #eef1f2;
+  }
+
+  .location-menu-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: #002f34;
+  }
+
+  .back-btn {
+    width: 28px;
+    height: 28px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    color: #002f34;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .back-btn.hidden {
+    display: none;
+  }
+
+  .location-menu-list {
+    max-height: 360px;
+    overflow-y: auto;
+  }
+
+  .location-item {
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid #e9eeef;
+    background: #fff;
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-align: left;
+    cursor: pointer;
+    color: #002f34;
+    font-size: 14px;
+  }
+
+  .location-item:hover {
+    background: #f2f4f5;
+  }
+
+  .location-item i {
+    font-size: 14px;
+    color: #002f34;
+  }
+  body {
+    background-color: #f2f4f5;
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+
+  .search-form {
+    overflow: visible !important;
+  }
+
+  .location-dropdown {
+    position: relative;
+  }
+
+  .location-toggle {
+    width: 100%;
+    height: 100%;
+    min-height: 64px;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 16px;
+    cursor: pointer;
+    transition: .2s;
+  }
+
+  .location-toggle.open {
+    box-shadow: inset 0 0 0 2px #00a49f;
+  }
+
+  .location-toggle-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-width: 0;
+  }
+
+  .location-label {
+    font-size: 14px;
+    color: #002f34;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .location-arrow {
+    font-size: 12px;
+    color: #5f6f73;
+    transition: transform .2s;
+    flex-shrink: 0;
+  }
+
+  .location-arrow.rotate {
+    transform: rotate(180deg);
+  }
+
+  .location-menu {
+    position: absolute;
+    top: calc(100% + 2px);
+    left: 0;
+    width: 100%;
+    min-width: 320px;
+    background: #fff;
+    border: 1px solid #d8dfe0;
+    box-shadow: 0 8px 24px rgba(0,0,0,.12);
+    z-index: 1000;
+  }
+
+  .location-menu.hidden {
+    display: none;
+  }
+
+  .location-menu-title {
+    padding: 12px 16px 8px;
+    font-size: 14px;
+    font-weight: 700;
+    color: #002f34;
+  }
+
+  .location-menu-list {
+    max-height: 340px;
+    overflow-y: auto;
+  }
+
+  .location-item {
+    width: 100%;
+    background: white;
+    border: none;
+    border-top: 1px solid #e9eeef;
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    text-align: left;
+    cursor: pointer;
+    font-size: 14px;
+    color: #002f34;
+    transition: .2s;
+  }
+
+  .location-item:hover {
+    background: #f2f4f5;
+  }
+
+  .location-item.active {
+    background: #f0fbfb;
+  }
+
+  .location-item i {
+    color: #002f34;
+    font-size: 14px;
+    flex-shrink: 0;
+  }
+
+    body {
+      background-color: #f2f4f5;
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+{% endblock %}
+
+{% block cod_html %}
+  <!-- SEARCH -->
+<div class="bg-white border-b border-gray-200 py-8">
+  <div class="max-w-6xl mx-auto px-4">
+    <form method="get" action="{% url 'announcement_search_page' %}"
+      class="search-form flex flex-col md:flex-row gap-0.5 shadow-sm rounded border border-gray-200">
+      <div class="flex-1 bg-white p-4 flex items-center gap-3">
+        <i class="fa-solid fa-magnifying-glass text-gray-400"></i>
+        <input
+          type="text"
+          name="q"
+          value="{{ search_value }}"
+          placeholder="Что ищете?"
+          class="w-full outline-none text-sm"
+        />
+      </div>
+
+      <div class="flex-1 bg-white border-t md:border-t-0 md:border-l border-gray-100 location-dropdown">
+  <input type="hidden" name="region" id="regionInput" value="">
+  <input type="hidden" name="city" id="cityInput" value="">
+
+  <button type="button" id="locationToggle" class="location-toggle">
+    <div class="location-toggle-left">
+      <i class="fa-solid fa-location-dot text-gray-400"></i>
+      <span id="locationLabel" class="location-label">Вся страна</span>
+    </div>
+    <i id="locationArrow" class="fa-solid fa-chevron-down location-arrow"></i>
+  </button>
+
+  <div id="locationMenu" class="location-menu hidden">
+    <div class="location-menu-header">
+      <button type="button" id="backToRegions" class="back-btn hidden">
+        <i class="fa-solid fa-chevron-left"></i>
+      </button>
+      <div id="locationMenuTitle" class="location-menu-title">Выберите область</div>
+    </div>
+
+    <div id="locationMenuList" class="location-menu-list"></div>
+  </div>
+</div>
+
+      <button
+        type="submit"
+        class="bg-[#002f34] text-white px-10 py-4 font-bold hover:bg-[#004d55] transition text-sm"
+      >
+        Поиск
+      </button>
+    </form>
+  </div>
+</div>
+
+
+  <!-- MAIN -->
+  <main class="max-w-6xl mx-auto px-4 py-12">
+    <h1 class="text-2xl md:text-3xl font-bold text-center text-[#002f34] mb-12">Главные категории</h1>
+
+    <!-- categories grid -->
+    <div id="categoriesGrid" class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-7 gap-6 mb-12"></div>
+
+    <!-- selected category block -->
+    <div class="bg-white rounded-lg shadow-sm p-6 md:p-8 border border-gray-100">
+      <h2 class="text-base md:text-lg font-bold mb-6 pb-4 border-b border-gray-100">
+        Категория: <span id="selectedCategoryName" class="text-cyan-600"></span>
+      </h2>
+      <div id="subCategoriesGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4"></div>
+    </div>
+
+    <!-- VIP -->
+    <section class="mt-16">
+      <h2 class="text-2xl font-bold text-center text-[#002f34] mb-8">VIP-объявления</h2>
+
+      <div id="productsGrid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"></div>
+
+      <div class="flex justify-center mt-12">
+        <button class="border-2 border-[#002f34] text-[#002f34] px-8 py-3 font-bold hover:bg-[#002f34] hover:text-white transition rounded">
+          Посмотреть все
+        </button>
+      </div>
+    </section>
+  </main>
+
+  <footer class="py-10 text-center text-gray-400 text-xs border-t border-gray-200 mt-12">
+    <p>&copy; 2026 OLX Clone. Теперь с фотографиями.</p>
+  </footer>
+
+{% endblock %}
+
+{% block cod_js %}
+  <script>
+  // --- Data (из Django) ---
+  const CATEGORIES = [
+    {% for category in categories %}
+      {
+        id: "{{ category.slug|escapejs }}",
+        name: "{{ category.name|escapejs }}",
+        img: "{{ category.image.url|escapejs }}",
+        subCategories: [
+          {% for child in category.children.all %}
+            { name: "{{ child.name|escapejs }}", slug: "{{ child.slug|escapejs }}" },
+          {% endfor %}
+        ]
+      },
+    {% endfor %}
+  ];
+
+  const PRODUCTS = [
+    {% for ann in announcements %}
+      {
+        id: {{ ann.id }},
+        title: "{{ ann.name|escapejs }}",
+        price: "{{ ann.price|escapejs }}",
+        location: "Ташкент, Чиланзарский район",
+        date: "Сегодня в 20:11",
+        img: "{{ ann.images.first.image.url|escapejs }}",
+          slug: "{% url 'announcement_detail_page' ann.slug %}"
+      },
+    {% endfor %}
+  ];
+
+  const REGION_CITIES = { {% for region in regions %}
+    "{{ region.name }}":
+        [{% for city in region.cities.all  %}
+        "{{ city.name }}",
+            {% endfor %}],
+      {% endfor %}
+  };
+
+  // --- State ---
+  let selectedId = CATEGORIES.length ? CATEGORIES[0].id : null;
+  let selectedRegion = "";
+  let selectedCity = "";
+  let locationView = "regions"; // regions | cities
+
+  // --- DOM ---
+  const categoriesGrid = document.getElementById("categoriesGrid");
+  const selectedCategoryName = document.getElementById("selectedCategoryName");
+  const subCategoriesGrid = document.getElementById("subCategoriesGrid");
+  const productsGrid = document.getElementById("productsGrid");
+
+  const locationToggle = document.getElementById("locationToggle");
+  const locationMenu = document.getElementById("locationMenu");
+  const locationMenuList = document.getElementById("locationMenuList");
+  const locationLabel = document.getElementById("locationLabel");
+  const locationArrow = document.getElementById("locationArrow");
+  const locationMenuTitle = document.getElementById("locationMenuTitle");
+  const backToRegions = document.getElementById("backToRegions");
+  const regionInput = document.getElementById("regionInput");
+  const cityInput = document.getElementById("cityInput");
+
+  function getSelectedCategory() {
+    return CATEGORIES.find(c => c.id === selectedId) || null;
+  }
+
+  function openLocationMenu() {
+    locationMenu.classList.remove("hidden");
+    locationToggle.classList.add("open");
+    locationArrow.classList.add("rotate");
+  }
+
+  function closeLocationMenu() {
+    locationMenu.classList.add("hidden");
+    locationToggle.classList.remove("open");
+    locationArrow.classList.remove("rotate");
+  }
+
+  function renderRegions() {
+    locationView = "regions";
+    locationMenuTitle.textContent = "Выберите область";
+    backToRegions.classList.add("hidden");
+
+    locationMenuList.innerHTML = Object.keys(REGION_CITIES).map(region => `
+      <button type="button" class="location-item" data-region="${region}">
+        <span>${region}</span>
+        <i class="fa-solid fa-chevron-right"></i>
+      </button>
+    `).join("");
+
+    locationMenuList.querySelectorAll("[data-region]").forEach(btn => {
+      btn.addEventListener("click", () => {
+        selectedRegion = btn.dataset.region;
+        selectedCity = "";
+        regionInput.value = selectedRegion;
+        cityInput.value = "";
+        renderCities(selectedRegion);
+      });
+    });
+  }
+
+  function renderCities(region) {
+    locationView = "cities";
+    locationMenuTitle.textContent = "Выберите город";
+    backToRegions.classList.remove("hidden");
+
+    const cities = REGION_CITIES[region] || [];
+
+    locationMenuList.innerHTML = cities.map(city => `
+      <button type="button" class="location-item" data-city="${city}">
+        <span>${city}</span>
+      </button>
+    `).join("");
+
+    locationMenuList.querySelectorAll("[data-city]").forEach(btn => {
+      btn.addEventListener("click", () => {
+        selectedCity = btn.dataset.city;
+        cityInput.value = selectedCity;
+        locationLabel.textContent = `${selectedRegion}, ${selectedCity}`;
+        closeLocationMenu();
+      });
+    });
+  }
+
+  locationToggle.addEventListener("click", (e) => {
+    e.preventDefault();
+
+    if (locationMenu.classList.contains("hidden")) {
+      openLocationMenu();
+    } else {
+      closeLocationMenu();
+    }
+  });
+
+  backToRegions.addEventListener("click", () => {
+    renderRegions();
+  });
+
+  document.addEventListener("click", (e) => {
+    const dropdown = document.querySelector(".location-dropdown");
+    if (dropdown && !dropdown.contains(e.target)) {
+      closeLocationMenu();
+    }
+  });
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+      closeLocationMenu();
+    }
+  });
+
+  function renderCategories() {
+    categoriesGrid.innerHTML = "";
+
+    CATEGORIES.forEach(cat => {
+      const isSelected = cat.id === selectedId;
+
+      const wrapper = document.createElement("div");
+      wrapper.className = "flex flex-col items-center gap-3 cursor-pointer group";
+      wrapper.addEventListener("click", () => {
+        selectedId = cat.id;
+        renderCategories();
+        renderSelectedCategory();
+      });
+
+      const circle = document.createElement("div");
+      circle.className =
+        "w-16 h-16 md:w-20 md:h-20 rounded-full overflow-hidden border-2 transition-all duration-200 " +
+        (isSelected
+          ? "border-cyan-500 ring-4 ring-cyan-100 scale-110 shadow-lg"
+          : "border-transparent hover:scale-105");
+
+      const img = document.createElement("img");
+      img.src = cat.img;
+      img.alt = cat.name;
+      img.className = "w-full h-full object-cover";
+
+      const name = document.createElement("span");
+      name.className =
+        "text-xs md:text-sm font-bold text-center leading-tight " +
+        (isSelected ? "text-cyan-600" : "text-[#002f34]");
+      name.textContent = cat.name;
+
+      circle.appendChild(img);
+      wrapper.appendChild(circle);
+      wrapper.appendChild(name);
+
+      categoriesGrid.appendChild(wrapper);
+    });
+  }
+
+  function renderSelectedCategory() {
+    const selected = getSelectedCategory();
+
+    if (!selected) {
+      selectedCategoryName.textContent = "";
+      subCategoriesGrid.innerHTML = `<p class="text-sm text-gray-400">Категорий нет</p>`;
+      return;
+    }
+
+    selectedCategoryName.textContent = selected.name;
+
+    if (!selected.subCategories || selected.subCategories.length === 0) {
+      subCategoriesGrid.innerHTML = `<p class="text-sm text-gray-400">Подкатегорий пока нет</p>`;
+      return;
+    }
+
+    subCategoriesGrid.innerHTML = "";
+    selected.subCategories.forEach(sub => {
+      const a = document.createElement("a");
+      a.href = `/category/${sub.slug}/`;
+      a.className =
+        "text-xs md:text-sm text-[#002f34] hover:text-cyan-600 flex items-center gap-2 group transition";
+
+      a.innerHTML = `
+        <i class="fa-solid fa-chevron-right text-[8px] text-gray-300 group-hover:text-cyan-600"></i>
+        ${sub.name}
+      `;
+
+      subCategoriesGrid.appendChild(a);
+    });
+  }
+
+  function productCardHTML(item) {
+    if (item.isJob) {
+      return `
+        <div class="bg-white rounded shadow-sm p-4 flex flex-col justify-between border border-transparent hover:shadow-md transition cursor-pointer relative">
+          <i class="fa-regular fa-heart absolute top-4 right-4 text-xl text-[#002f34]"></i>
+          <div>
+            <h3 class="font-bold text-[#002f34] text-sm mb-4 pr-6 leading-tight">${item.title}</h3>
+            <div class="space-y-2 text-[11px] text-[#002f34]">
+              <p class="flex items-center gap-2"><i class="fa-solid fa-money-bill-wave w-4"></i> <b>${item.price}</b></p>
+              <p class="flex items-center gap-2"><i class="fa-solid fa-location-dot w-4 text-gray-400"></i> ${item.location}</p>
+              <p class="flex items-center gap-2"><i class="fa-solid fa-briefcase w-4 text-gray-400"></i> ${item.type || ""}</p>
+              <p class="flex items-center gap-2"><i class="fa-solid fa-clock w-4 text-gray-400"></i> ${item.schedule || ""}</p>
+            </div>
+          </div>
+          <p class="text-[10px] text-gray-400 mt-6 pt-4 border-t border-gray-100">${item.date}</p>
+        </div>
+      `;
+    }
+
+    return `
+<a href="${item.slug}">
+      <div class="bg-white rounded shadow-sm overflow-hidden flex flex-col border border-transparent hover:shadow-md transition cursor-pointer group">
+        <div class="relative h-40 overflow-hidden bg-gray-100">
+          <img src="${item.img}" class="w-full h-full object-cover group-hover:scale-105 transition duration-300" alt="">
+        </div>
+        <div class="p-3 flex-1 flex flex-col justify-between">
+          <div>
+            <h3 class="text-sm text-[#002f34] leading-tight mb-2 line-clamp-2">${item.title}</h3>
+            <p class="text-[10px] text-gray-400 mb-2">${item.location} - ${item.date}</p>
+          </div>
+          <div class="flex items-center justify-between mt-2">
+            <span class="font-bold text-sm text-[#002f34]">${item.price}</span>
+            <i class="fa-regular fa-heart text-lg text-[#002f34] hover:text-red-500"></i>
+          </div>
+        </div>
+      </div>
+</a>
+    `;
+  }
+
+  function renderProducts() {
+    productsGrid.innerHTML = PRODUCTS.map(productCardHTML).join("");
+  }
+
+  // --- init ---
+  renderRegions();
+  renderCategories();
+  renderSelectedCategory();
+  renderProducts();
+</script>
+{% endblock %}
