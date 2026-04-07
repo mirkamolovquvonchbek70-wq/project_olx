@@ -1,0 +1,58 @@
+[
+{
+    "model": "apps.announcementimage",
+    "pk": 1,
+    "fields": {
+        "image": "announcementimage/2026/03/05/Без_названия_1.jpeg",
+        "product": 1
+    }
+},
+{
+    "model": "apps.announcementimage",
+    "pk": 2,
+    "fields": {
+        "image": "announcementimage/2026/03/08/cobolt.jpeg",
+        "product": 6
+    }
+},
+{
+    "model": "apps.announcementimage",
+    "pk": 3,
+    "fields": {
+        "image": "announcementimage/2026/03/08/Chevrolet_1.jpg",
+        "product": 6
+    }
+},
+{
+    "model": "apps.announcementimage",
+    "pk": 4,
+    "fields": {
+        "image": "announcementimage/2026/03/08/X2VQ71S849RWoNEglmGjuOUI4RgHoVkyHKJCNkQTpjyehCboGAwEUnngzHBm.jpg",
+        "product": 7
+    }
+},
+{
+    "model": "apps.announcementimage",
+    "pk": 5,
+    "fields": {
+        "image": "announcementimage/2026/03/09/cobolt.jpeg",
+        "product": 8
+    }
+},
+{
+    "model": "apps.announcementimage",
+    "pk": 6,
+    "fields": {
+        "image": "announcementimage/2026/03/09/cobolt1.jpeg",
+        "product": 8
+    }
+},
+{
+    "model": "apps.announcementimage",
+    "pk": 7,
+    "fields": {
+        "image": "announcementimage/2026/03/13/construction_goods_v3-1x.png",
+        "product": 9
+    }
+}
+]
