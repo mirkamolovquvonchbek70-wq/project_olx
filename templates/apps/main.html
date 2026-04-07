@@ -377,7 +377,8 @@
         price: "{{ ann.price|escapejs }}",
         location: "Ташкент, Чиланзарский район",
         date: "Сегодня в 20:11",
-        img: "{{ ann.images.first.image.url|escapejs }}"
+        img: "{{ ann.images.first.image.url|escapejs }}",
+          slug: "{% url 'announcement_detail_page' ann.slug %}"
       },
     {% endfor %}
   ];
@@ -593,6 +594,7 @@
     }
 
     return `
+<a href="${item.slug}">
       <div class="bg-white rounded shadow-sm overflow-hidden flex flex-col border border-transparent hover:shadow-md transition cursor-pointer group">
         <div class="relative h-40 overflow-hidden bg-gray-100">
           <img src="${item.img}" class="w-full h-full object-cover group-hover:scale-105 transition duration-300" alt="">
@@ -608,6 +610,7 @@
           </div>
         </div>
       </div>
+</a>
     `;
   }
 

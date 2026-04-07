@@ -1,26 +1,30 @@
 import urllib.parse
 from django.contrib.auth import login, logout
-from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import LoginView
 import requests
 from django.db.models import Q
-from django.shortcuts import redirect
 from django.urls import reverse_lazy
 from django.views import View
 from django.views.decorators.http import require_POST
 from django.views.generic import CreateView, UpdateView
-from django.contrib.auth.decorators import login_required
 from apps.forms import AnnouncementModelForm, RegisterModelForm, EmailLoginForm
-from apps.models import Announcement, Category, User, Region, City
+from apps.models import Category, User, Region
 from django.views.generic import ListView
 from apps.models.announcements import AnnouncementImage
 from root import settings
 from django.http import JsonResponse
-from django.shortcuts import get_object_or_404
 from django_filters.views import FilterView
 from apps.filters import AnnouncementFilterSet
 from apps.models import Favorite
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.shortcuts import get_object_or_404, redirect
+from django.views.generic import DetailView
+from django.utils.decorators import method_decorator
+from django.views.decorators.clickjacking import xframe_options_sameorigin
 
+from apps.models import Announcement
+from apps.models.chats import Chat
 
 
 class MainView(ListView):
@@ -145,6 +149,9 @@ class FavoriteView(LoginRequiredMixin, ListView):
             .distinct()
             .order_by("-favorited_by__created_at")
         )
+
+
+
 
 
 @require_POST
@@ -287,3 +294,68 @@ def category_attributes(request, slug):
 
 
 
+class AnnouncementDetailView(DetailView):
+    template_name = 'apps/announcement_detail.html'
+    context_object_name = 'announcement'
+    queryset = Announcement.objects.all()
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        if self.object.category:
+            context["breadcrumbs"] = self.object.category.get_ancestors(include_self=True)
+        else:
+            context["breadcrumbs"] = []
+
+        return context
+
+
+
+
+
+@login_required
+def start_chat_page(request, announcement_id):
+    announcement = get_object_or_404(Announcement, id=announcement_id)
+
+    if request.user == announcement.user:
+        return redirect("chat_detail_page", chat_id=Chat.objects.filter(
+            announcement=announcement,
+            seller=request.user
+        ).first().id if Chat.objects.filter(announcement=announcement, seller=request.user).exists() else 0)
+
+    chat, created = Chat.objects.get_or_create(
+        announcement=announcement,
+        buyer=request.user,
+        seller=announcement.user,
+    )
+
+    return redirect(f"/chat/{chat.id}/?popup=1")
+
+@method_decorator(xframe_options_sameorigin, name="dispatch")
+class ChatDetailView(LoginRequiredMixin, DetailView):
+    model = Chat
+    template_name = "apps/chat.html"
+    context_object_name = "current_chat"
+    pk_url_kwarg = "chat_id"
+
+    def get_queryset(self):
+        return Chat.objects.filter(buyer=self.request.user) | Chat.objects.filter(seller=self.request.user)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        current_chat = self.object
+
+        if self.request.user == current_chat.seller:
+            partner_user = current_chat.buyer
+        else:
+            partner_user = current_chat.seller
+
+        context["chats"] = (
+            Chat.objects.filter(buyer=self.request.user) |
+            Chat.objects.filter(seller=self.request.user)
+        ).distinct().prefetch_related("messages", "announcement__images")
+
+        context["messages"] = current_chat.messages.select_related("sender").all()
+        context["partner_user"] = partner_user
+        context["partner_presence"] = current_chat.presences.filter(user=partner_user).first()
+        return context

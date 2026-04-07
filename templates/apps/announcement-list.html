@@ -554,9 +554,9 @@
                 <div class="p-4 flex flex-col justify-between flex-grow">
                     <div>
                         <div class="flex justify-between items-start">
-                            <h4 class="text-lg text-[#002f34] leading-tight group-hover:text-cyan-600 cursor-pointer">
+                            <a href="{% url 'announcement_detail_page' announcement.slug %}" class="text-lg text-[#002f34] leading-tight group-hover:text-cyan-600 cursor-pointer">
                                 {{ announcement.name }}
-                            </h4>
+                            </a>
                             {% if request.user.is_authenticated %}
     <button
     type="button"

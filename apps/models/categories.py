@@ -11,9 +11,7 @@ class Category(SlugBaseModel, ImageBaseModel, MPTTModel):
     parent = TreeForeignKey('self', CASCADE, null=True, blank=True, related_name='children')
     attribute = JSONField(blank=True, null=True)
     count_products = IntegerField(default=0)
-    # path = ArrayField(CharField(max_length=255), blank=True, null=True)
 
-    # def save(self, *, force_insert=False, force_update=False, using=None, update_fields=None):
 
 
     def __str__(self):

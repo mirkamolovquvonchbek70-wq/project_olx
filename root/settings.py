@@ -16,6 +16,7 @@ ALLOWED_HOSTS = ['*']
 
 
 INSTALLED_APPS = [
+    "daphne",
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -27,6 +28,8 @@ INSTALLED_APPS = [
     'mptt',
     'django_filters',
     "django_json_widget",
+
+    "channels"
 ]
 
 MIDDLEWARE = [
@@ -59,6 +62,8 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'root.wsgi.application'
+ASGI_APPLICATION = 'root.asgi.application'
+X_FRAME_OPTIONS = 'SAMEORIGIN'
 
 
 DATABASES = {
@@ -109,3 +114,10 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 MEDIA_URL = "media/"
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "channels.layers.InMemoryChannelLayer",
+    }
+}

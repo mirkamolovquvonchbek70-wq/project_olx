@@ -27,7 +27,7 @@ class Announcement(SlugBaseModel, CreatedBaseModel):
     seller_type = CharField(max_length=10,choices=SellerTypeChoices.choices, default=SellerTypeChoices.PRIVATE)
     user = ForeignKey("apps.User", CASCADE, related_name='announcements')
     city = ForeignKey("apps.City", on_delete=CASCADE, related_name='announcements')
-
+    publication = DateTimeField(auto_now_add=True)
 
     @property
     def first_image(self):
