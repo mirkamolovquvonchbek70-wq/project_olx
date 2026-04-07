@@ -1,7 +1,8 @@
 from django.urls import path
 from apps.views import AnnouncementListView, MainView, CustomLoginView, GoogleLoginView, GoogleCallbackView, \
     ProfileUpdateView, CustomLogoutView, AnnouncementCreateView, category_attributes, RegisterCreateView, \
-    AnnouncementSearchView, FavoriteView, toggle_favorite, AnnouncementDetailView, start_chat_page, ChatDetailView
+    AnnouncementSearchView, FavoriteView, toggle_favorite, AnnouncementDetailView, start_chat_page, ChatDetailView, \
+    ChatListView
 
 urlpatterns = [
     path('', MainView.as_view(), name='main_page'),
@@ -12,6 +13,7 @@ urlpatterns = [
     path("announcements/<slug:slug>", AnnouncementDetailView.as_view(), name="announcement_detail_page"),
     path("chat/start/<int:announcement_id>/", start_chat_page, name="start_chat_page"),
     path("chat/<int:chat_id>/", ChatDetailView.as_view(), name="chat_detail_page"),
+    path('chats/', ChatListView.as_view(), name='chat_list_page'),
 
     path("categories/<slug:slug>/attributes/", category_attributes, name="category_attributes"),
     path("favorite/<int:pk>/", toggle_favorite, name="toggle_favorite"),

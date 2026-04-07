@@ -31,7 +31,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
           <span class="cursor-pointer text-gray-400 hover:text-white">Рус</span>
         </div>
 
-        <a href="{#{% if user.is_authenticated %}{% url 'chat_page' %}{% else %}{% url 'login_page' %}{% endif %}#}" class="flex items-center gap-2 cursor-pointer hover:text-cyan-400">
+        <a href="{% if user.is_authenticated %}{% url 'chat_list_page' %}{% else %}{% url 'login_page' %}{% endif %}" class="flex items-center gap-2 cursor-pointer hover:text-cyan-400">
           <i class="fa-regular fa-comment text-xl"></i>
           <span class="hidden lg:inline font-semibold text-sm">Чат</span>
         </a>

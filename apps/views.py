@@ -17,12 +17,12 @@ from django_filters.views import FilterView
 from apps.filters import AnnouncementFilterSet
 from apps.models import Favorite
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import get_object_or_404, redirect
 from django.views.generic import DetailView
 from django.utils.decorators import method_decorator
 from django.views.decorators.clickjacking import xframe_options_sameorigin
-
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views.generic import TemplateView
 from apps.models import Announcement
 from apps.models.chats import Chat
 
@@ -47,6 +47,7 @@ class MainView(ListView):
                 Q(name__icontains=q) |
                 Q(description__icontains=q)
             ).distinct()
+
 
         context['announcements'] = announcements
         context['search_value'] = q or ""
@@ -358,4 +359,25 @@ class ChatDetailView(LoginRequiredMixin, DetailView):
         context["messages"] = current_chat.messages.select_related("sender").all()
         context["partner_user"] = partner_user
         context["partner_presence"] = current_chat.presences.filter(user=partner_user).first()
+        return context
+
+
+
+
+class ChatListView(LoginRequiredMixin, TemplateView):
+    template_name = "apps/chat.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        # все чаты пользователя
+        chats = (
+            Chat.objects.filter(buyer=self.request.user) |
+            Chat.objects.filter(seller=self.request.user)
+        ).distinct().prefetch_related("messages", "announcement__images")
+
+        context["chats"] = chats
+        context["current_chat"] = None  # пока не выбран
+        context["messages"] = []
+
         return context
