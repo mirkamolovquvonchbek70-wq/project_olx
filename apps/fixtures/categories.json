@@ -8,7 +8,7 @@
         "name": "Transport",
         "parent": null,
         "attribute": null,
-        "count_products": 1,
+        "count_products": 9,
         "lft": 1,
         "rght": 38,
         "tree_id": 11,
@@ -173,7 +173,7 @@
                 "placeholder": null
             }
         ],
-        "count_products": 1,
+        "count_products": 9,
         "lft": 30,
         "rght": 35,
         "tree_id": 11,
@@ -223,7 +223,7 @@
         "attribute": null,
         "count_products": 0,
         "lft": 1,
-        "rght": 28,
+        "rght": 30,
         "tree_id": 3,
         "level": 0
     }
@@ -430,7 +430,7 @@
                 "placeholder": null
             }
         ],
-        "count_products": 1,
+        "count_products": 9,
         "lft": 33,
         "rght": 34,
         "tree_id": 11,
@@ -869,7 +869,7 @@
         "attribute": null,
         "count_products": 0,
         "lft": 20,
-        "rght": 21,
+        "rght": 23,
         "tree_id": 3,
         "level": 1
     }
@@ -1012,8 +1012,8 @@
         "parent": 5,
         "attribute": null,
         "count_products": 0,
-        "lft": 26,
-        "rght": 27,
+        "lft": 28,
+        "rght": 29,
         "tree_id": 3,
         "level": 1
     }
@@ -1028,8 +1028,8 @@
         "parent": 5,
         "attribute": null,
         "count_products": 0,
-        "lft": 22,
-        "rght": 23,
+        "lft": 24,
+        "rght": 25,
         "tree_id": 3,
         "level": 1
     }
@@ -1044,8 +1044,8 @@
         "parent": 5,
         "attribute": null,
         "count_products": 0,
-        "lft": 24,
-        "rght": 25,
+        "lft": 26,
+        "rght": 27,
         "tree_id": 3,
         "level": 1
     }
@@ -2359,6 +2359,74 @@
         "lft": 31,
         "rght": 32,
         "tree_id": 11,
+        "level": 2
+    }
+},
+{
+    "model": "apps.category",
+    "pk": 130,
+    "fields": {
+        "slug": "mobil-telefonlar",
+        "image": "",
+        "name": "Mobil telefonlar",
+        "parent": 33,
+        "attribute": [
+            {
+                "name": "state",
+                "type": "select",
+                "label": "Holati",
+                "options": [
+                    "F/y",
+                    "Yangi"
+                ],
+                "required": true,
+                "placeholder": "Tanlash"
+            },
+            {
+                "name": "rom",
+                "type": "multiselect",
+                "label": "Xotira",
+                "options": [
+                    "8 GB",
+                    "16 GB",
+                    "32 GB",
+                    "64 GB",
+                    "128 GB",
+                    "256 GB",
+                    "512 GB",
+                    "1 TB",
+                    "2 TB"
+                ],
+                "required": true,
+                "placeholder": "Tanlash"
+            },
+            {
+                "name": "ram",
+                "type": "multiselect",
+                "label": "Operativ xotira",
+                "options": [
+                    "1 GB",
+                    "2 GB",
+                    "3 GB",
+                    "4 GB",
+                    "5 GB",
+                    "6 GB",
+                    "7 GB",
+                    "8 GB",
+                    "12 GB",
+                    "16 GB",
+                    "32 GB",
+                    "64 GB",
+                    "128 GB"
+                ],
+                "required": true,
+                "placeholder": "Tanlash"
+            }
+        ],
+        "count_products": 0,
+        "lft": 21,
+        "rght": 22,
+        "tree_id": 3,
         "level": 2
     }
 }

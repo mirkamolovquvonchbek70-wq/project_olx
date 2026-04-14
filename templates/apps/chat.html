@@ -281,18 +281,48 @@
             min-height: 240px;
         }
     }
+    .chat-tabs {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.chat-tab {
+    padding: 6px 12px;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+    background: #e8ecec;
+    color: #002f34;
+    font-size: 14px;
+}
+
+.chat-tab.active {
+    background: #00a49f;
+    color: #fff;
+}
 </style>
 {% endblock %}
 
 {% block cod_html %}
 <div class="chat-page">
     <div class="chat-sidebar">
-        <div class="chat-sidebar-header">Чат</div>
+        <div class="chat-sidebar-header">
+    Чат
+
+    <div class="chat-tabs">
+        <button class="chat-tab" data-type="buy">Покупаю</button>
+<button class="chat-tab" data-type="sell">Продаю</button>
+    </div>
+</div>
 
         <div class="chat-list">
             {% for chat in chats %}
                 {% with last_message=chat.messages.last %}
-                <a href="{% url 'chat_detail_page' chat.id %}" class="chat-item {% if chat.id == current_chat.id %}active{% endif %}">
+                <a href="{% url 'chat_detail_page' chat.id %}"
+   class="chat-item
+   {% if chat.id == current_chat.id %}active{% endif %}
+   {% if request.user == chat.buyer %}buy{% else %}sell{% endif %}">
                     <div class="chat-avatar"></div>
 
                     <div class="chat-item-body">
@@ -514,6 +544,43 @@
             e.preventDefault();
             sendMessage();
         }
+    });
+
+    const tabs = document.querySelectorAll(".chat-tab");
+    const chats = document.querySelectorAll(".chat-item");
+    const currentChat = document.querySelector(".chat-item.active");
+
+    function setActiveTab(type) {
+        tabs.forEach(tab => {
+            tab.classList.toggle("active", tab.dataset.type === type);
+        });
+
+        chats.forEach(chat => {
+            if (chat.classList.contains(type)) {
+                chat.style.display = "flex";
+            } else {
+                chat.style.display = "none";
+            }
+        });
+    }
+
+    // При загрузке страницы выбираем вкладку по открытому чату
+    if (currentChat) {
+        if (currentChat.classList.contains("sell")) {
+            setActiveTab("sell");
+        } else {
+            setActiveTab("buy");
+        }
+    } else {
+        setActiveTab("buy");
+    }
+
+    // Переключение по клику
+    tabs.forEach(tab => {
+        tab.addEventListener("click", () => {
+            const type = tab.dataset.type;
+            setActiveTab(type);
+        });
     });
 </script>
 {% endif %}

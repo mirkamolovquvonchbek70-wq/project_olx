@@ -336,6 +336,126 @@
             width: 10px;
             height: 100%;
         }
+
+    /* ===== OLX multi select ===== */
+    .olx-multiselect {
+        position: relative;
+        width: 100%;
+    }
+
+    .olx-multiselect-native {
+        display: none !important;
+    }
+
+    .olx-multiselect-button {
+        width: 100%;
+        min-height: 44px;
+        background: #fff;
+        border: none;
+        border-bottom: 2px solid #ced4da;
+        padding: 10px 12px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        cursor: pointer;
+        color: #002f34;
+        font-size: 15px;
+        transition: border-color .2s ease;
+    }
+
+    .olx-multiselect-button:hover,
+    .olx-multiselect.open .olx-multiselect-button {
+        border-bottom-color: #002f34;
+    }
+
+    .olx-multiselect-label {
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        text-align: left;
+        flex: 1;
+    }
+
+    .olx-multiselect-arrow {
+        font-size: 12px;
+        color: #5f6f73;
+        transition: transform .2s ease;
+        flex-shrink: 0;
+    }
+
+    .olx-multiselect.open .olx-multiselect-arrow {
+        transform: rotate(180deg);
+    }
+
+    .olx-multiselect-menu {
+        position: absolute;
+        top: calc(100% + 4px);
+        left: 0;
+        right: 0;
+        background: #fff;
+        border: 1px solid #d8dfe0;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, .12);
+        z-index: 1200;
+        max-height: 320px;
+        overflow-y: auto;
+        display: none;
+    }
+
+    .olx-multiselect.open .olx-multiselect-menu {
+        display: block;
+    }
+
+    .olx-multiselect-option {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 12px 14px;
+        cursor: pointer;
+        border-bottom: 1px solid #eef1f2;
+        user-select: none;
+        color: #002f34;
+        font-size: 14px;
+    }
+
+    .olx-multiselect-option:hover {
+        background: #f2f4f5;
+    }
+
+    .olx-multiselect-option input[type="checkbox"] {
+        width: 22px;
+        height: 22px;
+        accent-color: #002f34;
+        cursor: pointer;
+        flex-shrink: 0;
+    }
+
+    .olx-multiselect-actions {
+        display: flex;
+        justify-content: space-between;
+        gap: 8px;
+        padding: 10px 12px;
+        border-bottom: 1px solid #eef1f2;
+        background: #fff;
+        position: sticky;
+        top: 0;
+        z-index: 2;
+    }
+
+    .olx-multiselect-action-btn {
+        border: 1px solid #d8dfe0;
+        background: #fff;
+        color: #002f34;
+        font-size: 13px;
+        font-weight: 600;
+        padding: 6px 10px;
+        cursor: pointer;
+    }
+
+    .olx-multiselect-action-btn:hover {
+        background: #f2f4f5;
+    }
+
     </style>
 {% endblock %}
 
@@ -831,6 +951,152 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     renderRegions();
+});
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    function getPlaceholder(select) {
+        const emptyOption = Array.from(select.options).find(opt => opt.value === "");
+        if (emptyOption && emptyOption.textContent.trim()) {
+            return emptyOption.textContent.trim();
+        }
+
+        const dataPlaceholder = select.dataset.placeholder;
+        if (dataPlaceholder) return dataPlaceholder;
+
+        return "Все объявления";
+    }
+
+    function updateButtonLabel(select, labelEl, placeholder) {
+        const selectedOptions = Array.from(select.selectedOptions)
+            .filter(opt => opt.value !== "");
+
+        if (selectedOptions.length === 0) {
+            labelEl.textContent = placeholder;
+            return;
+        }
+
+        if (selectedOptions.length === 1) {
+            labelEl.textContent = selectedOptions[0].textContent.trim();
+            return;
+        }
+
+        labelEl.textContent = `Выбрано: ${selectedOptions.length}`;
+    }
+
+    function createMultiSelect(select) {
+        if (select.dataset.multiselectReady === "1") return;
+
+        const placeholder = getPlaceholder(select);
+        select.dataset.multiselectReady = "1";
+        select.classList.add("olx-multiselect-native");
+
+        const wrapper = document.createElement("div");
+        wrapper.className = "olx-multiselect";
+
+        const button = document.createElement("button");
+        button.type = "button";
+        button.className = "olx-multiselect-button";
+
+        const label = document.createElement("span");
+        label.className = "olx-multiselect-label";
+        label.textContent = placeholder;
+
+        const arrow = document.createElement("i");
+        arrow.className = "fa-solid fa-chevron-down olx-multiselect-arrow";
+
+        button.append(label, arrow);
+
+        const menu = document.createElement("div");
+        menu.className = "olx-multiselect-menu";
+
+        const actions = document.createElement("div");
+        actions.className = "olx-multiselect-actions";
+
+        const selectAllBtn = document.createElement("button");
+        selectAllBtn.type = "button";
+        selectAllBtn.className = "olx-multiselect-action-btn";
+        selectAllBtn.textContent = "Выбрать все";
+
+        const clearBtn = document.createElement("button");
+        clearBtn.type = "button";
+        clearBtn.className = "olx-multiselect-action-btn";
+        clearBtn.textContent = "Сбросить";
+
+        actions.append(selectAllBtn, clearBtn);
+        menu.appendChild(actions);
+
+        const realOptions = Array.from(select.options).filter(opt => opt.value !== "");
+
+        realOptions.forEach((option, index) => {
+            const item = document.createElement("label");
+            item.className = "olx-multiselect-option";
+
+            const checkbox = document.createElement("input");
+            checkbox.type = "checkbox";
+            checkbox.checked = option.selected;
+            checkbox.dataset.index = index;
+
+            const text = document.createElement("span");
+            text.textContent = option.textContent.trim();
+
+            checkbox.addEventListener("change", function () {
+                option.selected = checkbox.checked;
+                updateButtonLabel(select, label, placeholder);
+                select.dispatchEvent(new Event("change", { bubbles: true }));
+            });
+
+            item.append(checkbox, text);
+            menu.appendChild(item);
+        });
+
+        selectAllBtn.addEventListener("click", function () {
+            realOptions.forEach(opt => opt.selected = true);
+            menu.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = true);
+            updateButtonLabel(select, label, placeholder);
+            select.dispatchEvent(new Event("change", { bubbles: true }));
+        });
+
+        clearBtn.addEventListener("click", function () {
+            realOptions.forEach(opt => opt.selected = false);
+            menu.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = false);
+            updateButtonLabel(select, label, placeholder);
+            select.dispatchEvent(new Event("change", { bubbles: true }));
+        });
+
+        button.addEventListener("click", function (e) {
+            e.preventDefault();
+
+            document.querySelectorAll(".olx-multiselect.open").forEach(el => {
+                if (el !== wrapper) el.classList.remove("open");
+            });
+
+            wrapper.classList.toggle("open");
+        });
+
+        document.addEventListener("click", function (e) {
+            if (!wrapper.contains(e.target)) {
+                wrapper.classList.remove("open");
+            }
+        });
+
+        document.addEventListener("keydown", function (e) {
+            if (e.key === "Escape") {
+                wrapper.classList.remove("open");
+            }
+        });
+
+        select.parentNode.insertBefore(wrapper, select);
+        wrapper.appendChild(button);
+        wrapper.appendChild(menu);
+        wrapper.appendChild(select);
+
+        updateButtonLabel(select, label, placeholder);
+    }
+
+    // только для multiple select
+    const multipleSelects = document.querySelectorAll('select[multiple]');
+    multipleSelects.forEach(createMultiSelect);
 });
 
 
